@@ -559,8 +559,7 @@ debug/mainwindow.o: ../Lab5/mainwindow.cpp ../Lab5/mainwindow.h \
 		C:/Qt/6.1.0/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/6.1.0/mingw81_64/include/QtWidgets/QGraphicsEllipseItem \
 		C:/Qt/6.1.0/mingw81_64/include/QtWidgets/qgraphicsitem.h \
-		C:/Qt/6.1.0/mingw81_64/include/QtGui/qpainterpath.h \
-		../Lab5/point.h
+		C:/Qt/6.1.0/mingw81_64/include/QtGui/qpainterpath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\Lab5\mainwindow.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 

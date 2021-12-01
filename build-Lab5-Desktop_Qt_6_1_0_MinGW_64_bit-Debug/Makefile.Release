@@ -559,8 +559,7 @@ release/mainwindow.o: ../Lab5/mainwindow.cpp ../Lab5/mainwindow.h \
 		C:/Qt/6.1.0/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/6.1.0/mingw81_64/include/QtWidgets/QGraphicsEllipseItem \
 		C:/Qt/6.1.0/mingw81_64/include/QtWidgets/qgraphicsitem.h \
-		C:/Qt/6.1.0/mingw81_64/include/QtGui/qpainterpath.h \
-		../Lab5/point.h
+		C:/Qt/6.1.0/mingw81_64/include/QtGui/qpainterpath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\Lab5\mainwindow.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 
