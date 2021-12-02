@@ -8,6 +8,10 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    game_board= ui->graphicsView;
+    game_board->set_parameters(ui->graphicsView->width());
+    setFixedSize(this->width(), this->height());
+
 }
 
 GameWindow::~GameWindow()

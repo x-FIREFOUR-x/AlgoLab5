@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QHBoxLayout>
 #include <QLabel>
+#include "gameboard.h"
 
 namespace Ui {
 class GameWindow;
@@ -17,6 +18,8 @@ class GameWindow : public QMainWindow
 
 private:
     Ui::GameWindow *ui;  //Покажчик на інтерфейс вікна
+
+    GameBoard* game_board;
 
     QVector<QVector<int>> matrixboard;    // рядок відповідає клітинци(8*8) стовбців(2) номер клітинки з'єднання номер гравця
 

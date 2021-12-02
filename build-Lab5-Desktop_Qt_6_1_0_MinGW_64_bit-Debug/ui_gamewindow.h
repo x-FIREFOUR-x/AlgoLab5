@@ -17,6 +17,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
+#include "gameboard.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -25,6 +26,7 @@ class Ui_GameWindow
 public:
     QAction *CloseEnd;
     QWidget *centralwidget;
+    GameBoard *graphicsView;
     QStatusBar *statusbar;
     QMenuBar *menubar;
     QMenu *menu;
@@ -33,18 +35,21 @@ public:
     {
         if (GameWindow->objectName().isEmpty())
             GameWindow->setObjectName(QString::fromUtf8("GameWindow"));
-        GameWindow->resize(800, 600);
+        GameWindow->resize(500, 550);
         CloseEnd = new QAction(GameWindow);
         CloseEnd->setObjectName(QString::fromUtf8("CloseEnd"));
         centralwidget = new QWidget(GameWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        graphicsView = new GameBoard(centralwidget);
+        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+        graphicsView->setGeometry(QRect(0, 0, 500, 500));
         GameWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(GameWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         GameWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(GameWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 500, 26));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         GameWindow->setMenuBar(menubar);
