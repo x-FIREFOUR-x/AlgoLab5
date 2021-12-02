@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QBrush>
+#include "paintercube.h"
 
 GameBoard::GameBoard(QWidget *parent):
     QGraphicsView(parent)
@@ -21,16 +22,27 @@ GameBoard::~GameBoard()
 void GameBoard::set_parameters(int side)
 {
     size_side_px = side ;
+    size_cells = side/ amount_point;
+
     setFixedSize(size_side_px,size_side_px);
     QPixmap image_board(":/images/image/board.png");
+    image_board = image_board.scaled(this->width(),this->height());
     scene->setSceneRect(0,0,image_board.width(),image_board.height());
     scene->setBackgroundBrush(image_board);
 }
 
-void GameBoard::mouse_click_event(QMouseEvent *event)
+void GameBoard::mousePressEvent(QMouseEvent *event)
 {
     int mouse_x = event->position().x();
     int mouse_y = event->position().y();
+
+    QString text = QString::number(mouse_x)+ " " + QString::number(mouse_y) + " " + QString::number(size_cells) + " " +QString::number(size_cells*2);
+    QString title;
+    QMessageBox:: about(this,title,text);
+
+    //PainterCube::paint_second_cube(scene, 0, 0, size_cells);
+    PainterCube::paint_second_cube(scene, mouse_x, mouse_y, size_cells*2, size_cells);
+
 }
 
 void GameBoard::resizeEvent(QResizeEvent *event)

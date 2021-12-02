@@ -9,6 +9,7 @@ class GameBoard: public QGraphicsView
 {
     int amount_point = 8;       // кількість точок (на стороні)
     int size_side_px;       // розмір сторони в пікселях
+    int size_cells;          // розмір одної клітинки
 
     QGraphicsScene *scene;  // покажчик на графічну сцену
 
@@ -22,7 +23,7 @@ public:
     void set_parameters(int side); //Метод, що використовується для встановлення розміру, ігрового поля
 
 protected:
-    void mouse_click_event(QMouseEvent *event);
+   virtual void mousePressEvent(QMouseEvent *event);
 
      void resizeEvent(QResizeEvent *event);    //Метод, який при зміні розміру області перегляду масштабує сцену
 };

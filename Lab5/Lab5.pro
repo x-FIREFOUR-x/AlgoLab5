@@ -12,12 +12,14 @@ SOURCES += \
     gameboard.cpp \
     gamewindow.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    paintercube.cpp
 
 HEADERS += \
     gameboard.h \
     gamewindow.h \
-    mainwindow.h
+    mainwindow.h \
+    paintercube.h
 
 FORMS += \
     gamewindow.ui \
