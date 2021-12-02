@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QWidget>
+#include "gamewindow.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,10 +19,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_ButtonStart_clicked();
+    void on_ButtonStart_clicked();      // початок нової гри
 
-
-    void on_ButtonEnd_clicked();
+    void on_ButtonEnd_clicked();        // закриття програми
 
 private:
     Ui::MainWindow *ui;

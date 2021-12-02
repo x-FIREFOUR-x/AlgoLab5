@@ -32,20 +32,20 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(300, 400);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         ButtonStart = new QPushButton(centralwidget);
         ButtonStart->setObjectName(QString::fromUtf8("ButtonStart"));
         ButtonStart->setEnabled(true);
-        ButtonStart->setGeometry(QRect(20, 50, 93, 28));
+        ButtonStart->setGeometry(QRect(75, 50, 150, 30));
         ButtonEnd = new QPushButton(centralwidget);
         ButtonEnd->setObjectName(QString::fromUtf8("ButtonEnd"));
-        ButtonEnd->setGeometry(QRect(20, 110, 93, 28));
+        ButtonEnd->setGeometry(QRect(75, 240, 150, 30));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 300, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -59,8 +59,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        ButtonStart->setText(QCoreApplication::translate("MainWindow", "\320\241\321\202\320\260\321\200\321\202", nullptr));
-        ButtonEnd->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\272\321\226\320\275\321\207\320\270\321\202\320\270 \320\263\321\200\321\203", nullptr));
+        ButtonStart->setText(QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\320\260 \320\263\321\200\320\260", nullptr));
+        ButtonEnd->setText(QCoreApplication::translate("MainWindow", "\320\222\320\270\320\271\321\202\320\270 \320\267 \320\263\321\200\320\270", nullptr));
     } // retranslateUi
 
 };
