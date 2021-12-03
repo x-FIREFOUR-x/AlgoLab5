@@ -14,18 +14,21 @@ SOURCES += \
     gamewindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    paintercube.cpp
+    paintercube.cpp \
+    presettingwindow.cpp
 
 HEADERS += \
     board.h \
     gameboard.h \
     gamewindow.h \
     mainwindow.h \
-    paintercube.h
+    paintercube.h \
+    presettingwindow.h
 
 FORMS += \
     gamewindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    presettingwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

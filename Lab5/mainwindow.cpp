@@ -17,9 +17,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_ButtonStart_clicked()
 {
     this->close();
-    GameWindow * game_window = new GameWindow(this);
-    game_window->setWindowTitle("Domineering 8x8");
-    game_window->show();
+    PresettingWindow * preset_window = new PresettingWindow(this);
+    preset_window->setWindowTitle("Domineering 8x8");
+    preset_window->show();
 
 }
 

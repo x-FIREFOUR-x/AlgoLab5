@@ -12,6 +12,8 @@ class GameBoard: public QGraphicsView
     int size_side_px;        // розмір сторони в пікселях
     int size_cells;          // розмір одної клітинки
 
+    bool game_with_pc;      //тип гри з комп'ютером чи два гравці
+
     int current_player;      //номер гравця чий хід
 
     QGraphicsScene *scene;  // покажчик на графічну сцену
@@ -23,7 +25,7 @@ public:
     ~GameBoard();
 
         //Метод, що використовується для встановлення розміру, ігрового поля
-    void set_parameters(int side);
+    void set_parameters(int side, bool g_with_pc);
 
 protected:
          // метод що реагує на клік миші по цьому класу віджету GameBoard на вікні GameWindow
@@ -31,6 +33,13 @@ protected:
 
         //Метод, який при зміні розміру області перегляду масштабує сцену
     void resizeEvent(QResizeEvent *event);
+
+private:
+        // гра йде гравець проти гравця
+    void player_vs_player(int mouse_x, int mouse_y);
+
+        // гра йде гравець проти комп'ютера
+    void player_vs_computer(int mouse_x, int mouse_y);
 };
 
 #endif // GAMEBOARD_H

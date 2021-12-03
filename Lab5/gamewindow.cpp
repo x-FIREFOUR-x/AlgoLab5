@@ -3,13 +3,13 @@
 #include "mainwindow.h"
 #include "gameboard.h"
 
-GameWindow::GameWindow(QWidget *parent) :
+GameWindow::GameWindow(bool g_with_pc, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
     game_board= ui->graphicsView;
-    game_board->set_parameters(ui->graphicsView->width());
+    game_board->set_parameters(ui->graphicsView->width(), g_with_pc);
     setFixedSize(this->width(), this->height());
 
 }

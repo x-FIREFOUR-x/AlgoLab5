@@ -1,0 +1,11 @@
+debug/board.o
+debug/gameboard.o
+debug/gamewindow.o
+debug/main.o
+debug/mainwindow.o
+debug/paintercube.o
+debug/presettingwindow.o
+debug/qrc_res.o
+debug/moc_gamewindow.o
+debug/moc_mainwindow.o
+debug/moc_presettingwindow.o

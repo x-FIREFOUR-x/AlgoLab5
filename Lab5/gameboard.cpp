@@ -13,8 +13,8 @@ GameBoard::GameBoard(QWidget *parent):
 {
     scene = new QGraphicsScene;
     setScene(scene);
-    current_player = 1;
 
+    current_player = 1;
 }
 
 GameBoard::~GameBoard()
@@ -22,10 +22,12 @@ GameBoard::~GameBoard()
     delete scene;
 }
 
-void GameBoard::set_parameters(int side)
+void GameBoard::set_parameters(int side, bool g_with_pc)
 {
     size_side_px = side ;
     size_cells = side/ amount_point;
+
+    game_with_pc = g_with_pc;
 
     setFixedSize(size_side_px,size_side_px);
     QPixmap image_board(":/images/image/board.png");
@@ -36,11 +38,25 @@ void GameBoard::set_parameters(int side)
 
 void GameBoard::mousePressEvent(QMouseEvent *event)
 {
+    int mouse_x = event->position().x();
+    int mouse_y = event->position().y();
+
+    if(game_with_pc)
+    {
+
+    }
+    else
+    {
+        player_vs_player(mouse_x, mouse_y);
+    }
+
+}
+
+void GameBoard::player_vs_player(int mouse_x, int mouse_y)
+{
         //перевіряєм чи хід можливий
     if(board.is_move(current_player))
     {
-        int mouse_x = event->position().x();
-        int mouse_y = event->position().y();
 
             // перевірка якого гравця хід
         if(current_player == 1)
@@ -107,7 +123,6 @@ void GameBoard::mousePressEvent(QMouseEvent *event)
 
     }
 
-
         // перевіряєм чи ігра закінчена
     if(!(board.is_move(current_player)))
     {
@@ -126,10 +141,14 @@ void GameBoard::mousePressEvent(QMouseEvent *event)
         }
     }
 
+}
 
-
+void GameBoard::player_vs_computer(int mouse_x, int mouse_y)
+{
 
 }
+
+
 
 void GameBoard::resizeEvent(QResizeEvent *event)
 {

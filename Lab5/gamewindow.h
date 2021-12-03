@@ -22,7 +22,7 @@ private:
     GameBoard* game_board;
 
 public:
-    explicit GameWindow(QWidget *parent = nullptr);
+    explicit GameWindow(bool g_with_pc, QWidget *parent = nullptr);
     ~GameWindow();
 
 private slots:
