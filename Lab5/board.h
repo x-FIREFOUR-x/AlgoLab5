@@ -31,6 +31,9 @@ public:
         // перевірка чи в гравця номер number_player є хід
     bool is_move(int number_player);
 
+        // перевірка чи клітинка номер index не зайняти блоками
+    bool is_cell_empty(int index);
+
     void console_log();
 };
 

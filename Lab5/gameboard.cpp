@@ -61,12 +61,13 @@ void GameBoard::mousePressEvent(QMouseEvent *event)
                     row_cell2 = row_cell1+1;
                 }
 
+                int index1 =  row_cell1 * amount_point  + column_cells;
+                int index2 =  row_cell2 * amount_point  + column_cells;
+
                     // перевірка можливості фарбування вибраних двох клітинок
-                if (row_cell1 >= 0 && row_cell2 < amount_point)
+                if (row_cell1 >= 0 && row_cell2 < amount_point && board.is_cell_empty(index1) && board.is_cell_empty(index2))
                 {
                     PainterCube::paint_first_cube(scene, column_cells * size_cells, row_cell1 * size_cells, size_cells, size_cells*2);
-                    int index1 =  row_cell1 * amount_point  + column_cells;
-                    int index2 =  row_cell2 * amount_point  + column_cells;
                     board.set_adj_cells(index1, index2, current_player);
                     current_player = 2;
 
@@ -91,12 +92,13 @@ void GameBoard::mousePressEvent(QMouseEvent *event)
                     column_cell2 = column_cell1+1;
                 }
 
+                int index1 =  row_cells * amount_point  + column_cell1;
+                int index2 =  row_cells * amount_point  + column_cell2;
+
                     // перевірка можливості фарбування вибраних двох клітинок
-                if (column_cell1 / amount_point == column_cell2 / amount_point)
+                if ((index1/amount_point == index2/amount_point ) && board.is_cell_empty(index1) && board.is_cell_empty(index2))
                 {
                     PainterCube::paint_second_cube(scene, column_cell1 * size_cells, row_cells * size_cells, size_cells*2, size_cells);
-                    int index1 =  row_cells * amount_point  + column_cell1;
-                    int index2 =  row_cells * amount_point  + column_cell2;
                     board.set_adj_cells(index1, index2, current_player);
                     current_player = 1;
                 }

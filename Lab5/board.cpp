@@ -98,3 +98,13 @@ void Board::console_log()
         cout << i << " " << arr_board[i].first << " " << arr_board[i].second << " " << endl;
     }
 }
+
+ bool Board::is_cell_empty(int index)
+ {
+     bool is_cell_empty = false;
+
+     if(arr_board[index].second == -1)
+         is_cell_empty = true;
+
+     return is_cell_empty;
+ }
