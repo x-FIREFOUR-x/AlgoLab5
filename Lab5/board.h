@@ -27,6 +27,11 @@ public:
 
         //з'єднати клітинки з індексами index1, index2 блоком гравця number_player
     void set_adj_cells(int index1, int index2, int number_player);
+
+        // перевірка чи в гравця номер number_player є хід
+    bool is_move(int number_player);
+
+    void console_log();
 };
 
 #endif // BOARD_H
