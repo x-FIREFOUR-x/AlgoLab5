@@ -8,10 +8,13 @@
 #include "paintercube.h"
 
 GameBoard::GameBoard(QWidget *parent):
-    QGraphicsView(parent)
+    QGraphicsView(parent),
+    board(amount_point)
 {
     scene = new QGraphicsScene;
     setScene(scene);
+    current_player = 1;
+
 }
 
 GameBoard::~GameBoard()
@@ -41,7 +44,17 @@ void GameBoard::mousePressEvent(QMouseEvent *event)
     QMessageBox:: about(this,title,text);
 
     //PainterCube::paint_second_cube(scene, 0, 0, size_cells);
-    PainterCube::paint_second_cube(scene, mouse_x, mouse_y, size_cells*2, size_cells);
+    if(current_player == 1)
+    {
+
+        PainterCube::paint_first_cube(scene, mouse_x, mouse_y, size_cells, size_cells*2);
+        current_player = 2;
+    }
+    else
+    {
+        PainterCube::paint_second_cube(scene, mouse_x, mouse_y, size_cells*2, size_cells);
+        current_player = 1;
+    }
 
 }
 

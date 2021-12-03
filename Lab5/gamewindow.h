@@ -21,13 +21,12 @@ private:
 
     GameBoard* game_board;
 
-    QVector<QVector<int>> matrixboard;    // рядок відповідає клітинци(8*8) стовбців(2) номер клітинки з'єднання номер гравця
-
 public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
 
 private slots:
+        // слот в menu_bar "Зікінчити гру" закриває вікно GameWindow і повертається MainWindow
     void on_CloseEnd_triggered();
 };
 

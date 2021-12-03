@@ -19,9 +19,11 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_ButtonStart_clicked();      // початок нової гри
+        // слот кнопки ButtonStart початок нової гри(відкриває вікно GameWindow)
+    void on_ButtonStart_clicked();
 
-    void on_ButtonEnd_clicked();        // закриття програми
+        // слот кнопки ButtonEnd закриття програми
+    void on_ButtonEnd_clicked();
 
 private:
     Ui::MainWindow *ui;
