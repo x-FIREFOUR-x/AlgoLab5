@@ -83,10 +83,10 @@ void StateBoard::calculate_terminal_value(int number_computer, int depth_of_reco
 
 EnemyComputer::EnemyComputer(Board gboard, int depth, int num_computer, int s, int amount_pt_sd)
 {
-    unique_ptr<StateBoard> p(new StateBoard(gboard)) ;
-    row.swap(p) ;
+    row = new StateBoard(gboard);
     max_depth = depth;
     number_computer = num_computer;
+    number_player = 2;
     current_depth = 0;
     size = s;
     amount_point_side = amount_pt_sd;
@@ -126,6 +126,10 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
 
     }
 
+    if(indexs_move.first == -1 || indexs_move.first > size)
+    {
+        indexs_move = search_last(row->board);
+    }
     return indexs_move;
 }
 
@@ -135,7 +139,7 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
     pair<int,int> vals;
     if(cur_node->board.is_move(number_computer))
     {
-        if(current_depth <= max_depth)
+        if(current_depth < max_depth)
         {
 
             for(int i =0; i < size; i++)
@@ -187,7 +191,7 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
     if(cur_node->board.is_move(number_player))
     {
             // перевірка глибини
-        if(current_depth <= max_depth)
+        if(current_depth < max_depth)
         {
                 // перебір можливих ходів що зробить гравець
             for(int i =0; i < size; i++)
@@ -231,4 +235,31 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
         pair<int,int> vals(max_value, 1);
         return vals;
     }
+}
+
+pair<int, int>  EnemyComputer::search_last(Board board)
+{
+    pair<int,int> inds;
+    for(int i =0; i <size; i++ )
+    {
+        if(number_computer == 1)
+        {
+            if (i < size - amount_point_side)
+                if(board.is_cell_empty(i) && board.is_cell_empty(i+amount_point_side))
+                {
+                    inds.first = i;
+                    inds.second = i + amount_point_side;
+                }
+        }
+        else
+        {
+            if (i % amount_point_side == i + 1 % amount_point_side)
+                if(board.is_cell_empty(i) && board.is_cell_empty(i+1))
+                {
+                    inds.first = i;
+                    inds.second = i + 1;
+                }
+        }
+    }
+    return inds;
 }

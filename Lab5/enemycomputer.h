@@ -26,7 +26,7 @@ using namespace std;
 class EnemyComputer
 {
 private:
-    unique_ptr<StateBoard> row;   //вказівник на вершину дерева ходів гри(стан гри на даний момент перед можливим ходом комп'ютера)
+    StateBoard* row;   //вказівник на вершину дерева ходів гри(стан гри на даний момент перед можливим ходом комп'ютера)
 
     int max_depth;                //максимальна глибина рекурсії бачення ходів наперед компютером
     int current_depth;            //поточний рівень заглиблення
@@ -46,6 +46,7 @@ public:
     pair<int,int> alfa_beta_pruning();
     pair<int,int> max_move(StateBoard* cur_node);
     pair<int,int> min_move(StateBoard* cur_node);
+    pair<int, int> search_last(Board board);
 };
 
 #endif // ENEMYCOMPUTER_H
