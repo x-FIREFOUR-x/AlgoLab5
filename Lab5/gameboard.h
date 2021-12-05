@@ -5,6 +5,7 @@
 #include <QGraphicsItem>
 #include <QVector>
 #include "board.h"
+#include "enemycomputer.h"
 
 class GameBoard: public QGraphicsView
 {
