@@ -8,9 +8,20 @@ Board::Board(int amount_p)
     arr_board.assign(size, pair<int,int>(-1,-1));
 }
 
+Board::Board(const Board& obj_board)
+{
+    amount_point_side = obj_board.amount_point_side;
+    size = obj_board.size;
+    arr_board = obj_board.arr_board;
+}
+
 int Board::get_size()
 {
     return size;
+}
+int Board::get_amount_point_side()
+{
+    return amount_point_side;
 }
 
 int Board::get_index_edj_cells(int index)
@@ -23,12 +34,40 @@ int Board::get_number_player_cells(int index)
     return arr_board[index].second;
 }
 
-void Board::set_adj_cells(int index1, int index2, int number_player)
+bool Board::set_adj_cells(int index1, int index2, int number_player)
 {
-    arr_board[index1].first = index2;
-    arr_board[index1].second = number_player;
-    arr_board[index2].first = index1;
-    arr_board[index2].second = number_player;
+    bool succes_adj = false;
+    if (number_player == 1)
+    {
+        if((index2 < size && index1 < size) && (index1 + amount_point_side == index2 || index2 + amount_point_side == index1))
+        {
+            if(arr_board[index1].second == -1 && arr_board[index2].second == -1)
+            {
+                arr_board[index1].first = index2;
+                arr_board[index1].second = number_player;
+                arr_board[index2].first = index1;
+                arr_board[index2].second = number_player;
+
+                succes_adj = true;
+            }
+        }
+    }
+    else
+    {
+        if((index2 < size && index1 < size) && (index1+1 == index2 || index2 + 1 == index1) &&(index1 / amount_point_side == index2 / amount_point_side ))
+        {
+            if(arr_board[index1].second == -1 && arr_board[index2].second == -1)
+            {
+                arr_board[index1].first = index2;
+                arr_board[index1].second = number_player;
+                arr_board[index2].first = index1;
+                arr_board[index2].second = number_player;
+
+                succes_adj = true;
+            }
+        }
+    }
+   return succes_adj;
 }
 
 bool Board::is_move(int number_player)
@@ -108,3 +147,5 @@ void Board::console_log()
 
      return is_cell_empty;
  }
+
+

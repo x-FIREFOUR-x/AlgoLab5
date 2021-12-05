@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     board.cpp \
+    enemycomputer.cpp \
     gameboard.cpp \
     gamewindow.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     board.h \
+    enemycomputer.h \
     gameboard.h \
     gamewindow.h \
     mainwindow.h \

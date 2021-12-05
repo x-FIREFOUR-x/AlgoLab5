@@ -1,4 +1,5 @@
 release/board.o
+release/enemycomputer.o
 release/gameboard.o
 release/gamewindow.o
 release/main.o
