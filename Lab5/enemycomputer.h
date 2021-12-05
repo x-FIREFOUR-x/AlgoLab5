@@ -42,7 +42,7 @@ private:
     pair<int,int> indexs_move;    // індекси двох кліток для ходу
 
 public:
-    EnemyComputer(Board gboard, int depth, int num_computer, int s, int amount_pt_sd);
+    EnemyComputer(Board gboard, int depth, int num_computer, int num_player, int s, int amount_pt_sd);
     pair<int,int> alfa_beta_pruning();
     pair<int,int> max_move(StateBoard* cur_node);
     pair<int,int> min_move(StateBoard* cur_node);

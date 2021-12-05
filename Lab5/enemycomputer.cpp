@@ -81,12 +81,12 @@ void StateBoard::calculate_terminal_value(int number_computer, int depth_of_reco
 
 }
 
-EnemyComputer::EnemyComputer(Board gboard, int depth, int num_computer, int s, int amount_pt_sd)
+EnemyComputer::EnemyComputer(Board gboard, int depth, int num_computer, int num_player, int s, int amount_pt_sd)
 {
     row = new StateBoard(gboard);
     max_depth = depth;
     number_computer = num_computer;
-    number_player = 2;
+    number_player = num_player;
     current_depth = 0;
     size = s;
     amount_point_side = amount_pt_sd;
@@ -137,11 +137,14 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
 {
     current_depth++;
     pair<int,int> vals;
+
+        // перевірка на термінальний стан
     if(cur_node->board.is_move(number_computer))
     {
+            // перевірка глибини
         if(current_depth < max_depth)
         {
-
+                // перебір можливих ходів що зробить гравець
             for(int i =0; i < size; i++)
             {
                 Board b = row->board;
@@ -187,7 +190,7 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
     current_depth++;
     pair<int,int> vals;
 
-        // перевірка на териінальний стан
+        // перевірка на термінальний стан
     if(cur_node->board.is_move(number_player))
     {
             // перевірка глибини
