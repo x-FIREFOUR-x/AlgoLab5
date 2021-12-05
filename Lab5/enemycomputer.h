@@ -8,7 +8,7 @@
 struct StateBoard
 {
     Board board;
-    vector<unique_ptr<StateBoard>> ptrs_board;
+    vector<StateBoard*> ptrs_board;
     int value;              // цінність даного стану гри для противника комп'ютера
     int terminal_value;     // термінальна цінність стану доски(гри) 0 не кінець гри 1 перемога комп'ютера -1 програш комп'ютера
 
@@ -44,8 +44,8 @@ private:
 public:
     EnemyComputer(Board gboard, int depth, int num_computer, int s, int amount_pt_sd);
     pair<int,int> alfa_beta_pruning();
-    pair<int,int> max_move(unique_ptr<StateBoard>& cur_node);
-    pair<int,int> min_move(unique_ptr<StateBoard>& cur_node);
+    pair<int,int> max_move(StateBoard* cur_node);
+    pair<int,int> min_move(StateBoard* cur_node);
 };
 
 #endif // ENEMYCOMPUTER_H

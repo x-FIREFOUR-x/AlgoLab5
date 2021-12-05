@@ -98,14 +98,14 @@ EnemyComputer::EnemyComputer(Board gboard, int depth, int num_computer, int s, i
 
 pair<int,int> EnemyComputer:: alfa_beta_pruning()
 {
-    Board b = row->board;
     pair<int,int> vals;
     for(int i =0; i < size; i++)
     {
+        Board b = row->board;
         bool succes_adj = b.set_adj_cells(i, i+amount_point_side, number_computer);
         if (succes_adj)
         {
-            row->ptrs_board.push_back(unique_ptr<StateBoard> (new StateBoard(b)));
+            row->ptrs_board.push_back(new StateBoard(b));
             vals = min_move(row->ptrs_board[row->ptrs_board.size()-1]);
 
         }
@@ -129,7 +129,7 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
     return indexs_move;
 }
 
-pair<int,int> EnemyComputer::max_move(unique_ptr<StateBoard>& cur_node)
+pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
 {
     current_depth++;
     pair<int,int> vals;
@@ -137,13 +137,14 @@ pair<int,int> EnemyComputer::max_move(unique_ptr<StateBoard>& cur_node)
     {
         if(current_depth <= max_depth)
         {
-            Board b = row->board;
+
             for(int i =0; i < size; i++)
             {
+                Board b = row->board;
                 bool succes_adj = b.set_adj_cells(i, i+amount_point_side, number_computer);
                 if (succes_adj)
                 {
-                    row->ptrs_board.push_back(unique_ptr<StateBoard> (new StateBoard(b)));
+                    row->ptrs_board.push_back(new StateBoard(b));
                     vals = min_move(row->ptrs_board[row->ptrs_board.size()-1]);
 
                 }
@@ -177,7 +178,7 @@ pair<int,int> EnemyComputer::max_move(unique_ptr<StateBoard>& cur_node)
     }
 }
 
-pair<int,int> EnemyComputer::min_move(unique_ptr<StateBoard>& cur_node)
+pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
 {
     current_depth++;
     pair<int,int> vals;
@@ -188,14 +189,14 @@ pair<int,int> EnemyComputer::min_move(unique_ptr<StateBoard>& cur_node)
             // перевірка глибини
         if(current_depth <= max_depth)
         {
-            Board b = row->board;
                 // перебір можливих ходів що зробить гравець
             for(int i =0; i < size; i++)
             {
+                Board b = row->board;
                 bool succes_adj = b.set_adj_cells(i, i+1, number_player);
                 if (succes_adj)
                 {
-                    row->ptrs_board.push_back(unique_ptr<StateBoard> (new StateBoard(b)));
+                    row->ptrs_board.push_back(new StateBoard(b));
                     vals = max_move(row->ptrs_board[row->ptrs_board.size()-1]);
 
                 }
