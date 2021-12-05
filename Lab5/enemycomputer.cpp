@@ -15,7 +15,7 @@ void StateBoard::calculate_value(int number_computer_move)
     {
         for(int i =0; i <board.get_size(); i++)
         {
-            if (i / amount_point_side != amount_point_side - 1 )
+            if ((i / amount_point_side) != (amount_point_side - 1) )
             {
                 if(board.get_number_player_cells(i) == -1 && board.get_number_player_cells(i+amount_point_side) == -1)
                 {
@@ -25,12 +25,13 @@ void StateBoard::calculate_value(int number_computer_move)
 
         }
 
+
     }
     else
     {
         for(int i =0; i < board.get_size(); i++)
         {
-            if (i % amount_point_side != amount_point_side - 1 )
+            if ((i % amount_point_side) != (amount_point_side - 1) )        // і не належить останній колонці
             {
                 if(board.get_number_player_cells(i) == -1 && board.get_number_player_cells(i+1) == -1)
                 {
@@ -44,7 +45,7 @@ void StateBoard::calculate_value(int number_computer_move)
 
 void StateBoard::calculate_terminal_value(int number_computer, int depth_of_recourse)
 {
-    if (number_computer == 1)
+    if (number_computer == 2)
     {
         if(depth_of_recourse % 2 != 0) // стан півходу з якого робить хід гравець
         {
@@ -247,7 +248,7 @@ pair<int, int>  EnemyComputer::search_last(Board board)
     {
         if(number_computer == 1)
         {
-            if (i < size - amount_point_side)
+            if (i / amount_point_side != amount_point_side - 1)
                 if(board.is_cell_empty(i) && board.is_cell_empty(i+amount_point_side))
                 {
                     inds.first = i;
