@@ -14,6 +14,8 @@ class GameBoard: public QGraphicsView
     int size_cells;          // розмір одної клітинки
 
     bool game_with_pc;      //тип гри з комп'ютером чи два гравці
+    bool computer_first;          // чи перший ходить компютер
+    int difficulty;         // рівень складності (1 легкий, 2 середній, 3 тяжкий)
 
     int current_player;      //номер гравця чий хід
 
@@ -27,6 +29,7 @@ public:
 
         //Метод, що використовується для встановлення розміру, ігрового поля
     void set_parameters(int side, bool g_with_pc);
+    void set_parameters(int side, bool g_with_pc, bool pc_first, int level_dif);
 
 protected:
          // метод що реагує на клік миші по цьому класу віджету GameBoard на вікні GameWindow

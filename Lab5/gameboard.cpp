@@ -36,6 +36,22 @@ void GameBoard::set_parameters(int side, bool g_with_pc)
     scene->setBackgroundBrush(image_board);
 }
 
+void GameBoard::set_parameters(int side, bool g_with_pc, bool pc_first, int level_dif)
+{
+    size_side_px = side ;
+    size_cells = side/ amount_point;
+
+    game_with_pc = g_with_pc;
+    computer_first = pc_first;
+    difficulty = level_dif;
+
+    setFixedSize(size_side_px,size_side_px);
+    QPixmap image_board(":/images/image/board.png");
+    image_board = image_board.scaled(this->width(),this->height());
+    scene->setSceneRect(0,0,image_board.width(),image_board.height());
+    scene->setBackgroundBrush(image_board);
+}
+
 void GameBoard::mousePressEvent(QMouseEvent *event)
 {
     int mouse_x = event->position().x();

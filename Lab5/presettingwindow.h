@@ -23,6 +23,10 @@ private slots:
         // повернутися назад вголовне меню (MainWindow)
     void on_ButtonBack_clicked();
 
+    void on_radioButtonPlayPC_clicked();
+
+    void on_radioButtonTwoPlayers_clicked();
+
 private:
     Ui::PresettingWindow *ui;
 };
