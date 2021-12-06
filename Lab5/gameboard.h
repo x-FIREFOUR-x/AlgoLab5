@@ -19,6 +19,9 @@ class GameBoard: public QGraphicsView
 
     int current_player;      //номер гравця чий хід
 
+    bool finished;          // гра закінчена
+    bool player_win;        //гравець виграв
+
     QGraphicsScene *scene;  // покажчик на графічну сцену
 
     Board board;            //доска (дані з'єднань)
@@ -42,10 +45,19 @@ private:
         // гра йде гравець проти гравця
     void player_vs_player(int mouse_x, int mouse_y);
 
+
         // гра йде гравець проти комп'ютера
     void player_vs_computer(int mouse_x, int mouse_y);
-    void computer_move_first(int mouse_x, int mouse_y);
-    void computer_move_second(int mouse_x, int mouse_y);
+
+        // функція ходу гравця коли він ходить другим граючи з компютером і асинхронний виклик першого ходу компютера pc_move_first
+    void player_move_second(int mouse_x, int mouse_y);
+
+    void pc_move_first();
+
+        // функція ходу гравця коли він ходить першим граючи з компютером і асинхронний виклик другого ходу компютера pc_move_second
+    void player_move_first(int mouse_x, int mouse_y);
+        // асинхронний хід компютера коли він ходить другим
+    void pc_move_second();
 };
 
 #endif // GAMEBOARD_H
