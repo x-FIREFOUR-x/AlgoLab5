@@ -48,7 +48,7 @@ void GameBoard::set_parameters(int side, bool g_with_pc, bool pc_first, int leve
     difficulty = level_dif;
     level_recur = difficulty;
     finished = false;
-    cout << difficulty << " " << endl;
+
     switch (difficulty)
     {
         case 1: time_deley = 400; break;

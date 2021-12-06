@@ -34,8 +34,8 @@ private:
     int number_computer;          //номер ходів компютера (1 || 2)
     int number_player;           //номер ходів гравця (1 || 2)
 
-    int size;
-    int amount_point_side;
+    int size;                   //кількість клітинок на полі
+    int amount_point_side;      // кількість точок на одній стороні
 
     int value;                    // остаточна цінність
     int terminate_value;          // термінальна цінність
@@ -43,10 +43,11 @@ private:
 
 public:
     EnemyComputer(Board gboard, int depth, int num_computer, int num_player, int s, int amount_pt_sd);
-    pair<int,int> alfa_beta_pruning();
-    pair<int,int> max_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value);
-    pair<int,int> min_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value);
-    pair<int, int> search_last(Board board);
+
+    pair<int,int> alfa_beta_pruning();      // альфа-бета отсікання
+    pair<int,int> max_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value);     // рекурсивний виклик макс
+    pair<int,int> min_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value);     // рекурсивний виклик мін
+    pair<int, int> search_last(Board board);        // пошук останнього ходу
 };
 
 #endif // ENEMYCOMPUTER_H
