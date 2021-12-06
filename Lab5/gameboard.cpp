@@ -256,7 +256,7 @@ void GameBoard::computer_move_second(int mouse_x, int mouse_y)
     {
 
             // перевірка чий хід компютера чи гравця
-        if(current_player == 1)
+        if(current_player == 2)
         {
             EnemyComputer computer(board, 64, 2, 1, board.get_size(), board.get_amount_point_side());
 
@@ -276,7 +276,7 @@ void GameBoard::computer_move_second(int mouse_x, int mouse_y)
             int column = index1 % amount_point;
             int row = index1 / amount_point;
 
-            PainterCube::paint_second_cube(scene, column * size_cells, row * size_cells, size_cells, size_cells*2);
+            PainterCube::paint_second_cube(scene, column * size_cells, row * size_cells, size_cells*2, size_cells);
             board.set_adj_cells(index1, index2, current_player);
             current_player = 1;
 

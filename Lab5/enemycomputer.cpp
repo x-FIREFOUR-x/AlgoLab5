@@ -68,7 +68,7 @@ void StateBoard::calculate_value(int number_computer_move)
 
 void StateBoard::calculate_terminal_value(int number_computer, int depth_of_recourse)
 {
-    if (number_computer == 2)       // цінність ходу визначається кількістб можливих ходів після власного ходу
+    if (number_computer == 1)       // цінність ходу визначається кількістб можливих ходів після власного ходу
     {
         if(depth_of_recourse % 2 != 0) // стан півходу з якого робить хід гравець
         {
@@ -126,7 +126,13 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
     for(int i =0; i < size; i++)
     {
         Board b = row->board;
-        bool succes_adj = b.set_adj_cells(i, i+amount_point_side, number_computer);
+
+        bool succes_adj;
+        if (number_computer == 1)
+             succes_adj = b.set_adj_cells(i, i+amount_point_side, number_computer);
+        else
+            succes_adj = b.set_adj_cells(i, i+1, number_computer);
+
         if (succes_adj)
         {
             row->ptrs_board.push_back(new StateBoard(b));
@@ -137,15 +143,27 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
                 terminate_value =1;
                 value = amount_point_side * (amount_point_side - 1);
                 indexs_move.first = i;
-                indexs_move.second = i +amount_point_side;
+                if(number_computer == 1)
+                    indexs_move.second = i +amount_point_side;
+                else
+                    indexs_move.second = i +1;
             }
             else
                 if(value < vals.first)
                 {
                      value = vals.first;
                      indexs_move.first = i;
-                     indexs_move.second = i +amount_point_side;
+                     if(number_computer == 1)
+                         indexs_move.second = i +amount_point_side;
+                     else
+                         indexs_move.second = i +1;
                 }
+        }
+
+
+        if(row->terminal_value == 1)
+        {
+            break;
         }
 
     }
@@ -159,9 +177,8 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
 
 pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_value)
 {
-    current_depth++;
     pair<int,int> vals;
-
+    current_depth++;
         // перевірка на термінальний стан
     if(cur_node->board.is_move(number_computer))
     {
@@ -171,13 +188,19 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_
                 // перебір можливих ходів що зробить гравець
             for(int i =0; i < size; i++)
             {
-                Board b = row->board;
-                bool succes_adj = b.set_adj_cells(i, i+amount_point_side, number_computer);
+                Board b = cur_node->board;
+
+                bool succes_adj;
+                if (number_computer == 1)
+                     succes_adj = b.set_adj_cells(i, i+amount_point_side, number_computer);
+                else
+                    succes_adj = b.set_adj_cells(i, i+1, number_computer);
+
                 if (succes_adj)
                 {
-                    row->ptrs_board.push_back(new StateBoard(b));
+                    cur_node->ptrs_board.push_back(new StateBoard(b));
                     pair<int,int> father_val(cur_node->value, cur_node->terminal_value);
-                    vals = min_move(row->ptrs_board[row->ptrs_board.size()-1], father_val);
+                    vals = min_move(cur_node->ptrs_board[cur_node->ptrs_board.size()-1], father_val);
 
                         //максимізатор вибирає виграш
                     if(vals.second == 1)
@@ -187,18 +210,20 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_
                     }
                         // максимізатор вибирає хід з найбільшою цінністю
                     else
-                        if(cur_node->value < vals.first)
+                        if(cur_node->value < vals.first && cur_node->value != -1)
                         {
                             cur_node->value = vals.first;
                             cur_node->value =0;
                         }
                 }
 
+
                     //відсікання
                 if(cur_node->terminal_value == 1 || (vals.first >= father_value.first && father_value.first != -1))
                 {
                     break;
                 }
+
             }
 
             return pair<int,int>(cur_node->value, cur_node->terminal_value);
@@ -214,7 +239,7 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_
         // термінальний стан програш компютера виграш гравця (термінал -1)
     else
     {
-        pair<int,int> vals(0, -1);
+        pair<int,int> vals(-2, -1);
         return vals;
     }
 }
@@ -233,13 +258,20 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node, pair<int,int>father_
                 // перебір можливих ходів що зробить гравець
             for(int i =0; i < size; i++)
             {
-                Board b = row->board;
-                bool succes_adj = b.set_adj_cells(i, i+1, number_player);
+
+                Board b = cur_node->board;
+                bool succes_adj;
+                if(number_computer == 1)
+                    succes_adj = b.set_adj_cells(i, i+1, number_player);
+                else
+                    succes_adj = b.set_adj_cells(i, i+amount_point_side, number_player);
+
                 if (succes_adj)
                 {
-                    row->ptrs_board.push_back(new StateBoard(b));
+
+                    cur_node->ptrs_board.push_back(new StateBoard(b));
                     pair<int,int> father_val(cur_node->value, cur_node->terminal_value);
-                    vals = max_move(row->ptrs_board[row->ptrs_board.size()-1], father_val);
+                    vals = max_move(cur_node->ptrs_board[cur_node->ptrs_board.size()-1], father_val);
 
                         // мінімізатор вибирає хід де максімізатор програє
                     if(vals.second == -1)
@@ -257,13 +289,15 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node, pair<int,int>father_
 
                     }
 
+
                     //відсікання
                 if(cur_node->terminal_value == -1 || (vals.first <= father_value.first && father_value.first != -1))
                 {
                     break;
                 }
-            }
 
+
+            }
              return pair<int,int>(cur_node->value, cur_node->terminal_value);
 
         }
@@ -300,7 +334,7 @@ pair<int, int>  EnemyComputer::search_last(Board board)
         }
         else
         {
-            if (i % amount_point_side == i + 1 % amount_point_side)
+            if (i / amount_point_side == i + 1 / amount_point_side)
                 if(board.is_cell_empty(i) && board.is_cell_empty(i+1))
                 {
                     inds.first = i;
