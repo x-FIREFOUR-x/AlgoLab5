@@ -44,8 +44,8 @@ private:
 public:
     EnemyComputer(Board gboard, int depth, int num_computer, int num_player, int s, int amount_pt_sd);
     pair<int,int> alfa_beta_pruning();
-    pair<int,int> max_move(StateBoard* cur_node);
-    pair<int,int> min_move(StateBoard* cur_node);
+    pair<int,int> max_move(StateBoard* cur_node, pair<int,int>father_value);
+    pair<int,int> min_move(StateBoard* cur_node, pair<int,int>father_value);
     pair<int, int> search_last(Board board);
 };
 

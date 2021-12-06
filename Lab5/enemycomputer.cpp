@@ -1,5 +1,4 @@
 #include "enemycomputer.h"
-#include "iostream"
 
 StateBoard::StateBoard(Board bord)
 {
@@ -131,7 +130,8 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
         if (succes_adj)
         {
             row->ptrs_board.push_back(new StateBoard(b));
-            vals = min_move(row->ptrs_board[row->ptrs_board.size()-1]);
+            pair<int,int> father_val(row->value,row->terminal_value);
+            vals = min_move(row->ptrs_board[row->ptrs_board.size()-1], father_val);
             if(vals.second == 1)
             {
                 terminate_value =1;
@@ -149,7 +149,7 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
         }
 
     }
-    cout << indexs_move.first << " " << indexs_move.second;
+
     if(indexs_move.first == -1 || indexs_move.first > size)
     {
         indexs_move = search_last(row->board);
@@ -157,7 +157,7 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
     return indexs_move;
 }
 
-pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
+pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_value)
 {
     current_depth++;
     pair<int,int> vals;
@@ -176,7 +176,8 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
                 if (succes_adj)
                 {
                     row->ptrs_board.push_back(new StateBoard(b));
-                    vals = min_move(row->ptrs_board[row->ptrs_board.size()-1]);
+                    pair<int,int> father_val(cur_node->value, cur_node->terminal_value);
+                    vals = min_move(row->ptrs_board[row->ptrs_board.size()-1], father_val);
 
                         //максимізатор вибирає виграш
                     if(vals.second == 1)
@@ -191,6 +192,12 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
                             cur_node->value = vals.first;
                             cur_node->value =0;
                         }
+                }
+
+                    //відсікання
+                if(cur_node->terminal_value == 1 || (vals.first >= father_value.first && father_value.first != -1))
+                {
+                    break;
                 }
             }
 
@@ -207,12 +214,12 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
         // термінальний стан програш компютера виграш гравця (термінал -1)
     else
     {
-        pair<int,int> vals(-2, -1);
+        pair<int,int> vals(0, -1);
         return vals;
     }
 }
 
-pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
+pair<int,int> EnemyComputer::min_move(StateBoard* cur_node, pair<int,int>father_value)
 {
     current_depth++;
     pair<int,int> vals;
@@ -231,7 +238,8 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
                 if (succes_adj)
                 {
                     row->ptrs_board.push_back(new StateBoard(b));
-                    vals = max_move(row->ptrs_board[row->ptrs_board.size()-1]);
+                    pair<int,int> father_val(cur_node->value, cur_node->terminal_value);
+                    vals = max_move(row->ptrs_board[row->ptrs_board.size()-1], father_val);
 
                         // мінімізатор вибирає хід де максімізатор програє
                     if(vals.second == -1)
@@ -248,6 +256,12 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
                         }
 
                     }
+
+                    //відсікання
+                if(cur_node->terminal_value == -1 || (vals.first <= father_value.first && father_value.first != -1))
+                {
+                    break;
+                }
             }
 
              return pair<int,int>(cur_node->value, cur_node->terminal_value);
