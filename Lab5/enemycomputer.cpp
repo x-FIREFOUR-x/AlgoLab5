@@ -132,22 +132,21 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
         {
             row->ptrs_board.push_back(new StateBoard(b));
             vals = min_move(row->ptrs_board[row->ptrs_board.size()-1]);
-        }
-        if(vals.second == 1)
-        {
-            terminate_value =1;
-            value = amount_point_side * (amount_point_side - 1);
-            indexs_move.first = i;
-            indexs_move.second = i +amount_point_side;
-        }
-        else
-            if(value < vals.first)
+            if(vals.second == 1)
             {
-                 value = vals.first;
-                 indexs_move.first = i;
-                 indexs_move.second = i +amount_point_side;
+                terminate_value =1;
+                value = amount_point_side * (amount_point_side - 1);
+                indexs_move.first = i;
+                indexs_move.second = i +amount_point_side;
             }
-
+            else
+                if(value < vals.first)
+                {
+                     value = vals.first;
+                     indexs_move.first = i;
+                     indexs_move.second = i +amount_point_side;
+                }
+        }
 
     }
     cout << indexs_move.first << " " << indexs_move.second;
@@ -179,21 +178,20 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
                     row->ptrs_board.push_back(new StateBoard(b));
                     vals = min_move(row->ptrs_board[row->ptrs_board.size()-1]);
 
-                }
-
-                    //максимізатор вибирає виграш
-                if(vals.second == 1)
-                {
-                    cur_node->terminal_value =1;
-                    cur_node->value = amount_point_side * (amount_point_side - 1);
-                }
-                    // максимізатор вибирає хід з найбільшою цінністю
-                else
-                    if(cur_node->value < vals.first)
+                        //максимізатор вибирає виграш
+                    if(vals.second == 1)
                     {
-                         cur_node->value = vals.first;
-                         cur_node->value =0;
+                        cur_node->terminal_value =1;
+                        cur_node->value = amount_point_side * (amount_point_side - 1);
                     }
+                        // максимізатор вибирає хід з найбільшою цінністю
+                    else
+                        if(cur_node->value < vals.first)
+                        {
+                            cur_node->value = vals.first;
+                            cur_node->value =0;
+                        }
+                }
             }
 
             return pair<int,int>(cur_node->value, cur_node->terminal_value);
@@ -235,23 +233,21 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
                     row->ptrs_board.push_back(new StateBoard(b));
                     vals = max_move(row->ptrs_board[row->ptrs_board.size()-1]);
 
-                }
-
-
-                    // мінімізатор вибирає хід де максімізатор програє
-                if(vals.second == -1)
-                {
-                    cur_node->terminal_value = -1;
-                    cur_node->value = -1;
-                }
-                else
-                        // мінімізатор вибирає хід з найменшою цінністю
-                    if(cur_node->value > vals.first && cur_node->value != -1)
+                        // мінімізатор вибирає хід де максімізатор програє
+                    if(vals.second == -1)
                     {
-                         cur_node->value = vals.first;
-                         cur_node->value =0;
+                        cur_node->terminal_value = -1;
+                        cur_node->value = -1;
                     }
+                    else
+                            // мінімізатор вибирає хід з найменшою цінністю
+                        if(cur_node->value > vals.first && cur_node->value != -1)
+                        {
+                             cur_node->value = vals.first;
+                             cur_node->value =0;
+                        }
 
+                    }
             }
 
              return pair<int,int>(cur_node->value, cur_node->terminal_value);
