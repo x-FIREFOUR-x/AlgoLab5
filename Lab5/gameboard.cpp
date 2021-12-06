@@ -1,4 +1,5 @@
 #include "gameboard.h"
+#include <iostream>
 
 #include <unistd.h>
 #include <QMouseEvent>
@@ -45,7 +46,15 @@ void GameBoard::set_parameters(int side, bool g_with_pc, bool pc_first, int leve
     game_with_pc = g_with_pc;
     computer_first = pc_first;
     difficulty = level_dif;
+    level_recur = difficulty;
     finished = false;
+    cout << difficulty << " " << endl;
+    switch (difficulty)
+    {
+        case 1: time_deley = 400; break;
+        case 2: time_deley = 200; break;
+        case 3: time_deley = 50; break;
+    }
 
     setFixedSize(size_side_px,size_side_px);
     QPixmap image_board(":/images/image/board.png");
@@ -55,7 +64,9 @@ void GameBoard::set_parameters(int side, bool g_with_pc, bool pc_first, int leve
 
     if(pc_first)
     {
-        QTimer::singleShot(400, this, &GameBoard::pc_move_first);
+        PainterCube::paint_first_cube(scene, 1 * size_cells, 0 * size_cells, size_cells, size_cells*2);
+        board.set_adj_cells(1, 9, current_player);
+        current_player = 2;
     }
 }
 
@@ -209,7 +220,7 @@ void GameBoard::player_move_second(int mouse_x, int mouse_y)
                     board.set_adj_cells(index1, index2, current_player);
                     current_player = 1;
 
-                    QTimer::singleShot(400, this, &GameBoard::pc_move_first);
+                    QTimer::singleShot(time_deley, this, &GameBoard::pc_move_first);
                 }
 
         }
@@ -312,7 +323,7 @@ void GameBoard::player_move_first(int mouse_x, int mouse_y)
                 board.set_adj_cells(index1, index2, current_player);
                 current_player = 2;
 
-                QTimer::singleShot(400, this, &GameBoard::pc_move_second);
+                QTimer::singleShot(time_deley, this, &GameBoard::pc_move_second);
 
             }
         }

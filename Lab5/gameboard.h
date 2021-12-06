@@ -14,10 +14,11 @@ class GameBoard: public QGraphicsView
     int size_cells;          // розмір одної клітинки
 
     bool game_with_pc;      //тип гри з комп'ютером чи два гравці
-    bool computer_first;          // чи перший ходить компютер
+    bool computer_first;    // чи перший ходить компютер
     int difficulty;         // рівень складності (1 легкий, 2 середній, 3 тяжкий)
 
-    int level_recur = 4;
+    int level_recur;        // глибина рекурсії рівна складності
+    int time_deley = 10;    // час затримки перд ходом компютера
 
     int current_player;      //номер гравця чий хід
 
