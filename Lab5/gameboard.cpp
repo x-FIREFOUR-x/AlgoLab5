@@ -161,13 +161,22 @@ void GameBoard::player_vs_player(int mouse_x, int mouse_y)
 
 void GameBoard::player_vs_computer(int mouse_x, int mouse_y)
 {
+    if(computer_first)
+        computer_move_first(mouse_x,mouse_y);
+    else
+        computer_move_second(mouse_x,mouse_y);
+
+}
+
+void GameBoard::computer_move_first(int mouse_x, int mouse_y)
+{
     if(board.is_move(current_player))
     {
 
             // перевірка чий хід компютера чи гравця
         if(current_player == 1)
         {
-                EnemyComputer computer(board, 64, 1,2, board.get_size(), board.get_amount_point_side());
+                EnemyComputer computer(board, 64, 1, 2, board.get_size(), board.get_amount_point_side());
 
                 pair<int,int> inds = computer.alfa_beta_pruning();
                 int index1;
@@ -241,7 +250,90 @@ void GameBoard::player_vs_computer(int mouse_x, int mouse_y)
         }
     }
 }
+void GameBoard::computer_move_second(int mouse_x, int mouse_y)
+{
+    if(board.is_move(current_player))
+    {
 
+            // перевірка чий хід компютера чи гравця
+        if(current_player == 1)
+        {
+            EnemyComputer computer(board, 64, 2, 1, board.get_size(), board.get_amount_point_side());
+
+            pair<int,int> inds = computer.alfa_beta_pruning();
+            int index1;
+            int index2;
+            if(inds.first <inds.second)
+            {
+                index1 = inds.first;
+                index2 = inds.second;
+            }
+            else
+            {
+                index1 = inds.second;
+                index2 = inds.first;
+            }
+            int column = index1 % amount_point;
+            int row = index1 / amount_point;
+
+            PainterCube::paint_second_cube(scene, column * size_cells, row * size_cells, size_cells, size_cells*2);
+            board.set_adj_cells(index1, index2, current_player);
+            current_player = 1;
+
+        }
+        else
+        {
+            int column_cells = mouse_x / size_cells;
+            int row_cell1;
+            int row_cell2;
+
+                // визначення номерів двох вибраних клітинок
+            if (mouse_y % size_cells < size_cells/2)
+            {
+                row_cell2 = mouse_y / size_cells;
+                row_cell1 = row_cell2-1;
+            }
+            else
+            {
+                row_cell1 = mouse_y / size_cells;
+                row_cell2 = row_cell1+1;
+            }
+
+            int index1 =  row_cell1 * amount_point  + column_cells;
+            int index2 =  row_cell2 * amount_point  + column_cells;
+
+                // перевірка можливості фарбування вибраних двох клітинок
+            if (row_cell1 >= 0 && row_cell2 < amount_point && board.is_cell_empty(index1) && board.is_cell_empty(index2))
+            {
+                PainterCube::paint_first_cube(scene, column_cells * size_cells, row_cell1 * size_cells, size_cells, size_cells*2);
+                board.set_adj_cells(index1, index2, current_player);
+                current_player = 2;
+
+            }
+
+        }
+
+    }
+
+        // перевіряєм чи ігра закінчена
+    if(!(board.is_move(current_player)))
+    {
+            // визначаєм переможця
+        if(current_player == 1)
+        {
+
+            QString text = "Ти програв";
+            QString title = "Ігра закінчилася";
+            QMessageBox:: about(this,title,text);
+        }
+        else
+        {
+            QString text = "Ти переміг";
+            QString title = "Ігра закінчилася";
+            QMessageBox:: about(this,title,text);
+        }
+    }
+}
 
 
 void GameBoard::resizeEvent(QResizeEvent *event)

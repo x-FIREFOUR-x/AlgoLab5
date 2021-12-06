@@ -44,6 +44,8 @@ private:
 
         // гра йде гравець проти комп'ютера
     void player_vs_computer(int mouse_x, int mouse_y);
+    void computer_move_first(int mouse_x, int mouse_y);
+    void computer_move_second(int mouse_x, int mouse_y);
 };
 
 #endif // GAMEBOARD_H
