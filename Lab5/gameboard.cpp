@@ -238,7 +238,7 @@ void GameBoard::pc_move_first()
     if(board.is_move(current_player))
     {
         // хід компютера
-        EnemyComputer computer(board, 64, 1, 2, board.get_size(), board.get_amount_point_side());
+        EnemyComputer computer(board, level_recur, 1, 2, board.get_size(), board.get_amount_point_side());
 
         pair<int,int> inds = computer.alfa_beta_pruning();
         int index1;
@@ -343,7 +343,7 @@ void GameBoard::pc_move_second()
     if(board.is_move(current_player))
     {
         // хід компютера
-        EnemyComputer computer(board, 64, 2, 1, board.get_size(), board.get_amount_point_side());
+        EnemyComputer computer(board, level_recur, 2, 1, board.get_size(), board.get_amount_point_side());
 
         pair<int,int> inds = computer.alfa_beta_pruning();
         int index1;

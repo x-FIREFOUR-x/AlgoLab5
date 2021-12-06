@@ -17,6 +17,8 @@ class GameBoard: public QGraphicsView
     bool computer_first;          // чи перший ходить компютер
     int difficulty;         // рівень складності (1 легкий, 2 середній, 3 тяжкий)
 
+    int level_recur = 4;
+
     int current_player;      //номер гравця чий хід
 
     bool finished;          // гра закінчена
