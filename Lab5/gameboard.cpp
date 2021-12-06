@@ -151,7 +151,7 @@ void GameBoard::player_vs_computer(int mouse_x, int mouse_y)
             // перевірка чий хід компютера чи гравця
         if(current_player == 1)
         {
-                EnemyComputer computer(board, 4, 1,2, board.get_size(), board.get_amount_point_side());
+                EnemyComputer computer(board, 1, 1,2, board.get_size(), board.get_amount_point_side());
 
                 pair<int,int> inds = computer.alfa_beta_pruning();
                 int index1;

@@ -1,4 +1,5 @@
 #include "enemycomputer.h"
+#include "iostream"
 
 StateBoard::StateBoard(Board bord)
 {
@@ -131,7 +132,6 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
         {
             row->ptrs_board.push_back(new StateBoard(b));
             vals = min_move(row->ptrs_board[row->ptrs_board.size()-1]);
-
         }
         if(vals.second == 1)
         {
@@ -148,8 +148,9 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
                  indexs_move.second = i +amount_point_side;
             }
 
-    }
 
+    }
+    cout << indexs_move.first << " " << indexs_move.second;
     if(indexs_move.first == -1 || indexs_move.first > size)
     {
         indexs_move = search_last(row->board);
@@ -180,11 +181,13 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
 
                 }
 
+                    //максимізатор вибирає виграш
                 if(vals.second == 1)
                 {
                     cur_node->terminal_value =1;
                     cur_node->value = amount_point_side * (amount_point_side - 1);
                 }
+                    // максимізатор вибирає хід з найбільшою цінністю
                 else
                     if(cur_node->value < vals.first)
                     {
@@ -195,6 +198,7 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
 
             return pair<int,int>(cur_node->value, cur_node->terminal_value);
         }
+            // перерахунок листової цінності
         else
         {
             cur_node->calculate_value(number_computer);
@@ -202,9 +206,10 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node)
             return vals;
         }
     }
+        // термінальний стан програш компютера виграш гравця (термінал -1)
     else
     {
-        pair<int,int> vals(-1, -1);
+        pair<int,int> vals(-2, -1);
         return vals;
     }
 }
@@ -232,13 +237,16 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
 
                 }
 
+
+                    // мінімізатор вибирає хід де максімізатор програє
                 if(vals.second == -1)
                 {
                     cur_node->terminal_value = -1;
                     cur_node->value = -1;
                 }
                 else
-                    if(cur_node->value > vals.first)
+                        // мінімізатор вибирає хід з найменшою цінністю
+                    if(cur_node->value > vals.first && cur_node->value != -1)
                     {
                          cur_node->value = vals.first;
                          cur_node->value =0;
@@ -249,6 +257,7 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
              return pair<int,int>(cur_node->value, cur_node->terminal_value);
 
         }
+            // перерахунок листової цінності
         else
         {
             cur_node->calculate_value(number_computer);
@@ -256,6 +265,7 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node)
             return vals;
         }
     }
+        // термінальний стан програш гравця а отже виграш компютера (термінальний 1)
     else
     {
         int max_value = amount_point_side * (amount_point_side-1);

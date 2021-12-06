@@ -39,7 +39,7 @@ bool Board::set_adj_cells(int index1, int index2, int number_player)
     bool succes_adj = false;
     if (number_player == 1)
     {
-        if((index2 < size && index1 < size) && (index1 + amount_point_side == index2 || index2 + amount_point_side == index1))
+        if(index2 < size && index1 < size && (index1 + amount_point_side == index2 || index2 + amount_point_side == index1))
         {
             if(arr_board[index1].second == -1 && arr_board[index2].second == -1)
             {
@@ -54,7 +54,7 @@ bool Board::set_adj_cells(int index1, int index2, int number_player)
     }
     else
     {
-        if((index2 < size && index1 < size) && (index1+1 == index2 || index2 + 1 == index1) &&(index1 / amount_point_side == index2 / amount_point_side ))
+        if(index2 < size && index1 < size && (index1+1 == index2 || index2 + 1 == index1) &&(index1 / amount_point_side == index2 / amount_point_side ))
         {
             if(arr_board[index1].second == -1 && arr_board[index2].second == -1)
             {
