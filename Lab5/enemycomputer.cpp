@@ -10,42 +10,65 @@ StateBoard::StateBoard(Board bord)
 void StateBoard::calculate_value(int number_computer_move)
 {
     value = 0;
+    int comp_value= 0;
+    int player_value=0;
     int amount_point_side = board.get_amount_point_side();
+        //коли компютер ходить першимм
     if (number_computer_move == 1)
     {
         for(int i =0; i <board.get_size(); i++)
         {
-            if ((i / amount_point_side) != (amount_point_side - 1) )
+                // кількість можливих ходів компютера
+            if ((i / amount_point_side) != (amount_point_side - 1) )        // не належить останньому рядку
             {
                 if(board.get_number_player_cells(i) == -1 && board.get_number_player_cells(i+amount_point_side) == -1)
                 {
-                    value++;
+                    comp_value++;
                 }
             }
-
-        }
-
-
-    }
-    else
-    {
-        for(int i =0; i < board.get_size(); i++)
-        {
+                // кількість можливих ходів гравця
             if ((i % amount_point_side) != (amount_point_side - 1) )        // і не належить останній колонці
             {
                 if(board.get_number_player_cells(i) == -1 && board.get_number_player_cells(i+1) == -1)
                 {
-                    value++;
+                    player_value++;
+                }
+            }
+
+        }
+
+        value = comp_value - player_value;
+    }
+        //коли компютер ходить другим
+    else
+    {
+        for(int i =0; i < board.get_size(); i++)
+        {
+                // кількість можливих ходів компютера
+            if ((i % amount_point_side) != (amount_point_side - 1) )        // і не належить останній колонці
+            {
+                if(board.get_number_player_cells(i) == -1 && board.get_number_player_cells(i+1) == -1)
+                {
+                    comp_value++;
+                }
+            }
+                // кількість можливих ходів гравця
+            if ((i / amount_point_side) != (amount_point_side - 1) )   // не належить останньому рядку
+            {
+                if(board.get_number_player_cells(i) == -1 && board.get_number_player_cells(i+amount_point_side) == -1)
+                {
+                    player_value++;
                 }
             }
         }
+        value = comp_value - player_value;
     }
 
 }
 
 void StateBoard::calculate_terminal_value(int number_computer, int depth_of_recourse)
 {
-    if (number_computer == 2)
+    if (number_computer == 2)       // цінність ходу визначається кількістб можливих ходів після власного ходу
     {
         if(depth_of_recourse % 2 != 0) // стан півходу з якого робить хід гравець
         {
