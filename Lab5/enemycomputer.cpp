@@ -149,7 +149,7 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
                     indexs_move.second = i +1;
             }
             else
-                if(value < vals.first)
+                if(value < vals.first && vals.second == 0)
                 {
                      value = vals.first;
                      indexs_move.first = i;
@@ -210,11 +210,23 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_
                     }
                         // максимізатор вибирає хід з найбільшою цінністю
                     else
-                        if(cur_node->value < vals.first && cur_node->value != -1)
+                        if (number_computer == 1)
                         {
-                            cur_node->value = vals.first;
-                            cur_node->value =0;
+                            if(cur_node->value < vals.first && cur_node->value != -1)
+                            {
+                                cur_node->value = vals.first;
+                                cur_node->value =0;
+                            }
                         }
+                        else
+                        {
+                            if(cur_node->value < vals.first && cur_node->value != -1)
+                            {
+                                cur_node->value = vals.first;
+                                cur_node->value =0;
+                            }
+                        }
+
                 }
 
 
@@ -334,7 +346,7 @@ pair<int, int>  EnemyComputer::search_last(Board board)
         }
         else
         {
-            if (i / amount_point_side == i + 1 / amount_point_side)
+            if (i / amount_point_side == (i + 1) / amount_point_side)
                 if(board.is_cell_empty(i) && board.is_cell_empty(i+1))
                 {
                     inds.first = i;

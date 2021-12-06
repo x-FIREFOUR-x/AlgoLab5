@@ -54,7 +54,7 @@ bool Board::set_adj_cells(int index1, int index2, int number_player)
     }
     else
     {
-        if(index2 < size && index1 < size && (index1+1 == index2 || index2 + 1 == index1) &&(index1 / amount_point_side == index2 / amount_point_side ))
+        if(index1 >= 0 && index2 >=0 && index2 < size && index1 < size && (index1+1 == index2 || index2 + 1 == index1) &&(index1 / amount_point_side == index2 / amount_point_side ))
         {
             if(arr_board[index1].second == -1 && arr_board[index2].second == -1)
             {
