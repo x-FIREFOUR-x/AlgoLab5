@@ -218,31 +218,67 @@ void GameBoard::player_move_second(int mouse_x, int mouse_y)
 
     else
     {
-        if (!finished)
+        if (player_win)
         {
-            QString text = "Ти програв";
+            QString text = "ТИ ПЕРЕМІГ";
+            QString title = "Ігра закінчилася";
+            QMessageBox:: about(this,title,text);
+        }
+        else
+        {
+            QString text = "ТИ ПРОГРАВ";
+            QString title = "Ігра закінчилася";
+            QMessageBox:: about(this,title,text);
+        }
+    }
+}
+
+void GameBoard::pc_move_first()
+{
+    if(board.is_move(current_player))
+    {
+        // хід компютера
+        EnemyComputer computer(board, 64, 1, 2, board.get_size(), board.get_amount_point_side());
+
+        pair<int,int> inds = computer.alfa_beta_pruning();
+        int index1;
+        int index2;
+        if(inds.first < inds.second)
+        {
+            index1 = inds.first;
+            index2 = inds.second;
+        }
+        else
+        {
+            index1 = inds.second;
+            index2 = inds.first;
+        }
+        int column = index1 % amount_point;
+        int row = index1 / amount_point;
+
+        PainterCube::paint_first_cube(scene, column * size_cells, row * size_cells, size_cells, size_cells*2);
+        board.set_adj_cells(index1, index2, current_player);
+        current_player = 2;
+
+        if(!board.is_move(current_player))
+        {
+            QString text = "ТИ ПРОГРАВ";
             QString title = "Ігра закінчилася";
             QMessageBox:: about(this,title,text);
             finished = true;
             player_win = false;
         }
-        else
-        {
-            if (player_win)
-            {
-                QString text = "Ти переміг";
-                QString title = "Ігра закінчилася";
-                QMessageBox:: about(this,title,text);
-            }
-            else
-            {
-                QString text = "Ти програв";
-                QString title = "Ігра закінчилася";
-                QMessageBox:: about(this,title,text);
-            }
-        }
+    }
+    else
+    {
+        QString text = "ТИ ПЕРЕМІГ";
+        QString title = "Ігра закінчилася";
+        QMessageBox:: about(this,title,text);
+        finished = true;
+        player_win = true;
     }
 }
+
 void GameBoard::player_move_first(int mouse_x, int mouse_y)
 {
     if(board.is_move(current_player))
@@ -277,74 +313,30 @@ void GameBoard::player_move_first(int mouse_x, int mouse_y)
                 current_player = 2;
 
                 QTimer::singleShot(400, this, &GameBoard::pc_move_second);
+
             }
         }
 
     }
     else
     {
-        if (!finished)
+        if (player_win)
         {
-            QString text = "Ти програв";
+            QString text = "ТИ ПЕРЕМІГ";
             QString title = "Ігра закінчилася";
             QMessageBox:: about(this,title,text);
-            finished = true;
-            player_win = false;
         }
         else
         {
-            if (player_win)
-            {
-                QString text = "Ти переміг";
-                QString title = "Ігра закінчилася";
-                QMessageBox:: about(this,title,text);
-            }
-            else
-            {
-                QString text = "Ти програв";
-                QString title = "Ігра закінчилася";
-                QMessageBox:: about(this,title,text);
-            }
+            QString text = "ТИ ПРОГРАВ";
+            QString title = "Ігра закінчилася";
+            QMessageBox:: about(this,title,text);
         }
+
     }
 }
 
-void GameBoard::pc_move_first()
-{
-    if(board.is_move(current_player))
-    {
-        // хід компютера
-        EnemyComputer computer(board, 64, 1, 2, board.get_size(), board.get_amount_point_side());
 
-        pair<int,int> inds = computer.alfa_beta_pruning();
-        int index1;
-        int index2;
-        if(inds.first < inds.second)
-        {
-            index1 = inds.first;
-            index2 = inds.second;
-        }
-        else
-        {
-            index1 = inds.second;
-            index2 = inds.first;
-        }
-        int column = index1 % amount_point;
-        int row = index1 / amount_point;
-
-        PainterCube::paint_first_cube(scene, column * size_cells, row * size_cells, size_cells, size_cells*2);
-        board.set_adj_cells(index1, index2, current_player);
-        current_player = 2;
-    }
-    else
-    {
-        QString text = "Ти переміг";
-        QString title = "Ігра закінчилася";
-        QMessageBox:: about(this,title,text);
-        finished = true;
-        player_win = true;
-    }
-}
 
 void GameBoard::pc_move_second()
 {
@@ -375,7 +367,7 @@ void GameBoard::pc_move_second()
 
         if(!board.is_move(current_player))
         {
-            QString text = "Ти програв";
+            QString text = "ТИ ПРОГРАВ";
             QString title = "Ігра закінчилася";
             QMessageBox:: about(this,title,text);
             finished = true;
@@ -384,7 +376,7 @@ void GameBoard::pc_move_second()
     }
     else
     {
-        QString text = "Ти переміг";
+        QString text = "ТИ ПЕРЕМІГ";
         QString title = "Ігра закінчилася";
         QMessageBox:: about(this,title,text);
         finished = true;

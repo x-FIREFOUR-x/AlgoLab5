@@ -107,7 +107,9 @@ void StateBoard::calculate_terminal_value(int number_computer, int depth_of_reco
 
 EnemyComputer::EnemyComputer(Board gboard, int depth, int num_computer, int num_player, int s, int amount_pt_sd)
 {
-    row = new StateBoard(gboard);
+    row = make_shared<StateBoard>(gboard);
+    //shared_ptr<StateBoard> p(StateBoard(gboard));
+    //row.swap(p);
     max_depth = depth;
     number_computer = num_computer;
     number_player = num_player;
@@ -135,7 +137,7 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
 
         if (succes_adj)
         {
-            row->ptrs_board.push_back(new StateBoard(b));
+            row->ptrs_board.push_back(make_shared<StateBoard>(b));
             pair<int,int> father_val(row->value,row->terminal_value);
             vals = min_move(row->ptrs_board[row->ptrs_board.size()-1], father_val);
             if(vals.second == 1)
@@ -175,7 +177,7 @@ pair<int,int> EnemyComputer:: alfa_beta_pruning()
     return indexs_move;
 }
 
-pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_value)
+pair<int,int> EnemyComputer::max_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value)
 {
     pair<int,int> vals;
     current_depth++;
@@ -198,7 +200,7 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_
 
                 if (succes_adj)
                 {
-                    cur_node->ptrs_board.push_back(new StateBoard(b));
+                    cur_node->ptrs_board.push_back(make_shared<StateBoard>(b));
                     pair<int,int> father_val(cur_node->value, cur_node->terminal_value);
                     vals = min_move(cur_node->ptrs_board[cur_node->ptrs_board.size()-1], father_val);
 
@@ -256,7 +258,7 @@ pair<int,int> EnemyComputer::max_move(StateBoard* cur_node, pair<int,int>father_
     }
 }
 
-pair<int,int> EnemyComputer::min_move(StateBoard* cur_node, pair<int,int>father_value)
+pair<int,int> EnemyComputer::min_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value)
 {
     current_depth++;
     pair<int,int> vals;
@@ -281,7 +283,7 @@ pair<int,int> EnemyComputer::min_move(StateBoard* cur_node, pair<int,int>father_
                 if (succes_adj)
                 {
 
-                    cur_node->ptrs_board.push_back(new StateBoard(b));
+                    cur_node->ptrs_board.push_back(make_shared<StateBoard>(b));
                     pair<int,int> father_val(cur_node->value, cur_node->terminal_value);
                     vals = max_move(cur_node->ptrs_board[cur_node->ptrs_board.size()-1], father_val);
 

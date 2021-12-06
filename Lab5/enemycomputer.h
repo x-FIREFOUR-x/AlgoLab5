@@ -8,7 +8,7 @@
 struct StateBoard
 {
     Board board;
-    vector<StateBoard*> ptrs_board;
+    vector<shared_ptr<StateBoard>> ptrs_board;
     int value;              // цінність даного стану гри для противника комп'ютера
     int terminal_value;     // термінальна цінність стану доски(гри) 0 не кінець гри 1 перемога комп'ютера -1 програш комп'ютера
 
@@ -26,7 +26,7 @@ using namespace std;
 class EnemyComputer
 {
 private:
-    StateBoard* row;   //вказівник на вершину дерева ходів гри(стан гри на даний момент перед можливим ходом комп'ютера)
+    shared_ptr<StateBoard> row;   //вказівник на вершину дерева ходів гри(стан гри на даний момент перед можливим ходом комп'ютера)
 
     int max_depth;                //максимальна глибина рекурсії бачення ходів наперед компютером
     int current_depth;            //поточний рівень заглиблення
@@ -44,8 +44,8 @@ private:
 public:
     EnemyComputer(Board gboard, int depth, int num_computer, int num_player, int s, int amount_pt_sd);
     pair<int,int> alfa_beta_pruning();
-    pair<int,int> max_move(StateBoard* cur_node, pair<int,int>father_value);
-    pair<int,int> min_move(StateBoard* cur_node, pair<int,int>father_value);
+    pair<int,int> max_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value);
+    pair<int,int> min_move(shared_ptr<StateBoard> cur_node, pair<int,int>father_value);
     pair<int, int> search_last(Board board);
 };
 
