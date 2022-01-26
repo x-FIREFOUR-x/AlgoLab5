@@ -3,7 +3,7 @@
 MainWindow* WindowsWorker::window_main = nullptr;
 PresettingWindow* WindowsWorker::window_presetting = nullptr;
 GameWindow* WindowsWorker::window_game = nullptr;
-//WindowRules* WindowsWorker::window_rules = nullptr;
+WindowRules* WindowsWorker::window_rules = nullptr;
 SaveWindow* WindowsWorker::window_save = nullptr;
 DownloadWindow* WindowsWorker::window_download = nullptr;
 
@@ -27,11 +27,11 @@ GameWindow* WindowsWorker::get_GameWindow()
 {
     return window_game;
 }
-/*
+
 WindowRules* WindowsWorker::get_WindowRules()
 {
     return window_rules;
-}*/
+}
 
 
 
@@ -93,7 +93,7 @@ void WindowsWorker::close_GameWindow()
 }
 
 
-/*
+
 void WindowsWorker::open_WindowRules()
 {
     window_rules = new WindowRules();
@@ -105,7 +105,7 @@ void WindowsWorker::close_WindowRules()
     window_rules->close();
     delete window_rules;
     window_rules = nullptr;
-}*/
+}
 
 void WindowsWorker::open_SaveWindow()
 {

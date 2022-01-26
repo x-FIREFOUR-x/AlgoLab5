@@ -4,14 +4,14 @@
 class MainWindow;
 class PresettingWindow;
 class GameWindow;
-//class WindowRules;
+class WindowRules;
 class SaveWindow;
 class DownloadWindow;
 
 #include "gamewindow.h"
 #include "mainwindow.h"
 #include "presettingwindow.h"
-//#include "windowrules.h"
+#include "windowrules.h"
 #include "savewindow.h"
 #include "downloadwindow.h"
 
@@ -22,7 +22,7 @@ private:
     static MainWindow* window_main;
     static PresettingWindow* window_presetting;
     static GameWindow* window_game;
-   // static WindowRules* window_rules;
+    static WindowRules* window_rules;
     static SaveWindow* window_save;
     static DownloadWindow* window_download;
 
@@ -32,7 +32,7 @@ public:
     static MainWindow* get_MainWindow();
     static PresettingWindow* get_PresettingWindow();
     static GameWindow* get_GameWindow();
-    //static WindowRules* get_WindowRules();
+    static WindowRules* get_WindowRules();
 
 
 

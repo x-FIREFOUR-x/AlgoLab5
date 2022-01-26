@@ -42,22 +42,44 @@
     <addaction name="CloseEnd"/>
     <addaction name="SaveAs"/>
     <addaction name="Save"/>
+    <addaction name="Rules"/>
    </widget>
    <addaction name="menu"/>
   </widget>
   <action name="CloseEnd">
+   <property name="icon">
+    <iconset resource="../res.qrc">
+     <normaloff>:/images/image/icon/close.png</normaloff>:/images/image/icon/close.png</iconset>
+   </property>
    <property name="text">
     <string>Закрити гру</string>
    </property>
   </action>
   <action name="SaveAs">
+   <property name="icon">
+    <iconset resource="../res.qrc">
+     <normaloff>:/images/image/icon/saveAs.png</normaloff>:/images/image/icon/saveAs.png</iconset>
+   </property>
    <property name="text">
     <string>Зберегти як</string>
    </property>
   </action>
   <action name="Save">
+   <property name="icon">
+    <iconset resource="../res.qrc">
+     <normaloff>:/images/image/icon/save.png</normaloff>:/images/image/icon/save.png</iconset>
+   </property>
    <property name="text">
     <string>Зберегти</string>
+   </property>
+  </action>
+  <action name="Rules">
+   <property name="icon">
+    <iconset resource="../res.qrc">
+     <normaloff>:/images/image/icon/rules.png</normaloff>:/images/image/icon/rules.png</iconset>
+   </property>
+   <property name="text">
+    <string>Правила</string>
    </property>
   </action>
  </widget>
@@ -68,6 +90,8 @@
    <header>gameboard.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../res.qrc"/>
+ </resources>
  <connections/>
 </ui>

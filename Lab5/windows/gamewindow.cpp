@@ -88,3 +88,10 @@ void GameWindow::download_game()
     game_board->download_game(this->width(),game_with_pc, computer_first, difficulty, current_player, finished, player_win, board);
 
 }
+
+void GameWindow::on_Rules_triggered()
+{
+    WindowsWorker::open_WindowRules();
+    WindowsWorker::hide_WindowGame();
+}
+

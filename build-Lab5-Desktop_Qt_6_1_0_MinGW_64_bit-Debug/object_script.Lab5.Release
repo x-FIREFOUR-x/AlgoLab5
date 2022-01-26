@@ -4,6 +4,7 @@ release/fileworker.o
 release/gameboard.o
 release/downloadwindow.o
 release/savewindow.o
+release/windowrules.o
 release/gamewindow.o
 release/main.o
 release/mainwindow.o
@@ -13,6 +14,7 @@ release/windowsworker.o
 release/qrc_res.o
 release/moc_downloadwindow.o
 release/moc_savewindow.o
+release/moc_windowrules.o
 release/moc_gamewindow.o
 release/moc_mainwindow.o
 release/moc_presettingwindow.o

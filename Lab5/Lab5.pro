@@ -15,6 +15,7 @@ SOURCES += \
     logic\gameboard.cpp \
     windows/downloadwindow.cpp \
     windows/savewindow.cpp \
+    windows/windowrules.cpp \
     windows\gamewindow.cpp \
     main.cpp \
     windows\mainwindow.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     logic\gameboard.h \
     windows/downloadwindow.h \
     windows/savewindow.h \
+    windows/windowrules.h \
     windows\gamewindow.h \
     windows\mainwindow.h \
     logic\paintercube.h \
@@ -38,6 +40,7 @@ HEADERS += \
 FORMS += \
     windows/downloadwindow.ui \
     windows/savewindow.ui \
+    windows/windowrules.ui \
     windows\gamewindow.ui \
     windows\mainwindow.ui \
     windows\presettingwindow.ui

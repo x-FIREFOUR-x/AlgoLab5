@@ -21,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>75</x>
-      <y>50</y>
+      <y>46</y>
       <width>150</width>
       <height>30</height>
      </rect>
@@ -34,7 +34,7 @@
     <property name="geometry">
      <rect>
       <x>75</x>
-      <y>240</y>
+      <y>274</y>
       <width>150</width>
       <height>30</height>
      </rect>
@@ -47,13 +47,26 @@
     <property name="geometry">
      <rect>
       <x>75</x>
-      <y>110</y>
+      <y>122</y>
       <width>150</width>
       <height>30</height>
      </rect>
     </property>
     <property name="text">
      <string>Загрузити гру</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButtonRules">
+    <property name="geometry">
+     <rect>
+      <x>75</x>
+      <y>198</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Правила</string>
     </property>
    </widget>
   </widget>

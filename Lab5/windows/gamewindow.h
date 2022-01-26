@@ -40,6 +40,7 @@ private slots:
     void on_SaveAs_triggered();
         // слот в menu_bar "Зберегти" зберігає дані в встановлений файл або ховає вікно GameWindow і відкриває вікно SaveWindow , якщо файл сейву не встановлений
     void on_Save_triggered();
+    void on_Rules_triggered();
 };
 
 #endif // GAMEWINDOW_H

@@ -26,6 +26,7 @@ public:
     QPushButton *ButtonStart;
     QPushButton *ButtonEnd;
     QPushButton *ButtonDownload;
+    QPushButton *ButtonRules;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -39,13 +40,16 @@ public:
         ButtonStart = new QPushButton(centralwidget);
         ButtonStart->setObjectName(QString::fromUtf8("ButtonStart"));
         ButtonStart->setEnabled(true);
-        ButtonStart->setGeometry(QRect(75, 50, 150, 30));
+        ButtonStart->setGeometry(QRect(75, 46, 150, 30));
         ButtonEnd = new QPushButton(centralwidget);
         ButtonEnd->setObjectName(QString::fromUtf8("ButtonEnd"));
-        ButtonEnd->setGeometry(QRect(75, 240, 150, 30));
+        ButtonEnd->setGeometry(QRect(75, 274, 150, 30));
         ButtonDownload = new QPushButton(centralwidget);
         ButtonDownload->setObjectName(QString::fromUtf8("ButtonDownload"));
-        ButtonDownload->setGeometry(QRect(75, 110, 150, 30));
+        ButtonDownload->setGeometry(QRect(75, 122, 150, 30));
+        ButtonRules = new QPushButton(centralwidget);
+        ButtonRules->setObjectName(QString::fromUtf8("ButtonRules"));
+        ButtonRules->setGeometry(QRect(75, 198, 150, 30));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -66,6 +70,7 @@ public:
         ButtonStart->setText(QCoreApplication::translate("MainWindow", "\320\235\320\276\320\262\320\260 \320\263\321\200\320\260", nullptr));
         ButtonEnd->setText(QCoreApplication::translate("MainWindow", "\320\222\320\270\320\271\321\202\320\270 \320\267 \320\263\321\200\320\270", nullptr));
         ButtonDownload->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\320\270 \320\263\321\200\321\203", nullptr));
+        ButtonRules->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\260\320\262\320\270\320\273\320\260", nullptr));
     } // retranslateUi
 
 };
