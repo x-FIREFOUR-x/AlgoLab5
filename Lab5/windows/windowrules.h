@@ -26,12 +26,12 @@ private slots:
 private:
     Ui::WindowRules *ui;
 
-    QString path = ":/image/PNG-cards/rules/";        //шлях до зображеннь
+    QString path = ":/images/image/rules/";        //шлях до зображеннь
     QString name_file = "RulesPage";            //головна частина імені зображення + номер зображення
     int current_page;                           //номер поточного зображення
     QString type_file = ".png";                 //розширення зображення
 
-    int amount_page = 6;                        //кількість зображень сторінок правил
+    int amount_page = 3;                        //кількість зображень сторінок правил
 
 private:
     void set_NumberPage();                      //установити номер поточного зображення

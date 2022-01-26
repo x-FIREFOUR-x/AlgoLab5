@@ -57,7 +57,7 @@ void WindowRules::on_PreviousPageButton_clicked()
 
 void WindowRules::on_NextPageButton_clicked()
 {
-    if (current_page == 6)
+    if (current_page == amount_page)
         current_page = 1;
     else
         current_page++;
@@ -80,10 +80,10 @@ void WindowRules::paint_page_rules()
 
 void WindowRules::style()
 {
-    this->setWindowTitle("Останній гравець");
+    /*this->setWindowTitle("Останній гравець");
     //this->setStyleSheet("background-color:#2c8616;");
 
     ui->PreviousPageButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 12pt Calibri;");
     ui->NextPageButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 12pt Calibri;");
-    ui->CloseRuleButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 14pt Monotype Corsiva; font-weight: 570;");
+    ui->CloseRuleButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 14pt Monotype Corsiva; font-weight: 570;");*/
 }

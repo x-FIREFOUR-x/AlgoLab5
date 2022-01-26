@@ -161,6 +161,9 @@ debug/qrc_res.cpp: ../Lab5/res.qrc \
 		../Lab5/image/cube1.png \
 		../Lab5/image/cube2.png \
 		../Lab5/image/board.png \
+		../Lab5/image/rules/RulesPage2.png \
+		../Lab5/image/rules/RulesPage1.png \
+		../Lab5/image/rules/RulesPage3.png \
 		../Lab5/image/icon/saveAs.png \
 		../Lab5/image/icon/close.png \
 		../Lab5/image/icon/rules.png \

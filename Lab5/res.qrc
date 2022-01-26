@@ -7,5 +7,8 @@
         <file>image/icon/rules.png</file>
         <file>image/icon/save.png</file>
         <file>image/icon/saveAs.png</file>
+        <file>image/rules/RulesPage1.png</file>
+        <file>image/rules/RulesPage2.png</file>
+        <file>image/rules/RulesPage3.png</file>
     </qresource>
 </RCC>
