@@ -3,5 +3,9 @@
         <file>image/board.png</file>
         <file>image/cube1.png</file>
         <file>image/cube2.png</file>
+        <file>image/icon/close.png</file>
+        <file>image/icon/rules.png</file>
+        <file>image/icon/save.png</file>
+        <file>image/icon/saveAs.png</file>
     </qresource>
 </RCC>

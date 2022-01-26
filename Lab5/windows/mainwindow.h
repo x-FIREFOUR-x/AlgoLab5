@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 #include <QWidget>
-#include "gamewindow.h"
-#include "presettingwindow.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +23,11 @@ private slots:
 
         // слот кнопки ButtonEnd закриття програми
     void on_ButtonEnd_clicked();
+
+        //слот кнопки ButtonDownload відкриття вікна загрузки гри (DownloadWindow)
+    void on_ButtonDownload_clicked();
+
+    void on_ButtonRules_clicked();
 
 private:
     Ui::MainWindow *ui;

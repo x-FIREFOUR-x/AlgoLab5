@@ -9,28 +9,41 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    board.cpp \
-    enemycomputer.cpp \
-    gameboard.cpp \
-    gamewindow.cpp \
+    logic\board.cpp \
+    logic\enemycomputer.cpp \
+    logic\fileworker.cpp \
+    logic\gameboard.cpp \
+    windows/downloadwindow.cpp \
+    windows/savewindow.cpp \
+    windows/windowrules.cpp \
+    windows\gamewindow.cpp \
     main.cpp \
-    mainwindow.cpp \
-    paintercube.cpp \
-    presettingwindow.cpp
+    windows\mainwindow.cpp \
+    logic\paintercube.cpp \
+    windows\presettingwindow.cpp \
+    windows\windowsworker.cpp
 
 HEADERS += \
-    board.h \
-    enemycomputer.h \
-    gameboard.h \
-    gamewindow.h \
-    mainwindow.h \
-    paintercube.h \
-    presettingwindow.h
+    logic\board.h \
+    logic\enemycomputer.h \
+    logic\fileworker.h \
+    logic\gameboard.h \
+    windows/downloadwindow.h \
+    windows/savewindow.h \
+    windows/windowrules.h \
+    windows\gamewindow.h \
+    windows\mainwindow.h \
+    logic\paintercube.h \
+    windows\presettingwindow.h \
+    windows\windowsworker.h
 
 FORMS += \
-    gamewindow.ui \
-    mainwindow.ui \
-    presettingwindow.ui
+    windows/downloadwindow.ui \
+    windows/savewindow.ui \
+    windows/windowrules.ui \
+    windows\gamewindow.ui \
+    windows\mainwindow.ui \
+    windows\presettingwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

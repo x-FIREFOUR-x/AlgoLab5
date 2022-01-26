@@ -1,46 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>SaveWindow</class>
+ <widget class="QMainWindow" name="SaveWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>400</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="ButtonStart">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
+   <widget class="QLineEdit" name="labelFilename">
     <property name="geometry">
      <rect>
-      <x>75</x>
-      <y>50</y>
-      <width>150</width>
-      <height>30</height>
+      <x>30</x>
+      <y>70</y>
+      <width>240</width>
+      <height>22</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Нова гра</string>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
     </property>
    </widget>
-   <widget class="QPushButton" name="ButtonEnd">
+   <widget class="QPushButton" name="SaveButton">
     <property name="geometry">
      <rect>
-      <x>75</x>
-      <y>240</y>
-      <width>150</width>
+      <x>80</x>
+      <y>120</y>
+      <width>140</width>
       <height>30</height>
      </rect>
     </property>
     <property name="text">
-     <string>Вийти з гри</string>
+     <string>Зберегти гру</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>251</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Введіть назву збереження гри</string>
     </property>
    </widget>
   </widget>

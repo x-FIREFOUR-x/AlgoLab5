@@ -1,6 +1,6 @@
 #include "presettingwindow.h"
 #include "ui_presettingwindow.h"
-#include "mainwindow.h"
+#include "windows/windowsworker.h"
 
 PresettingWindow::PresettingWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,12 +17,9 @@ PresettingWindow::~PresettingWindow()
 void PresettingWindow::on_ButtonGoGame_clicked()
 {
     bool play_with_pc = ui->radioButtonPlayPC->isChecked();
-    this->close();
     if (!play_with_pc)
     {
-        GameWindow * game_window = new GameWindow(play_with_pc, this);
-        game_window->setWindowTitle("Domineering 8x8");
-        game_window->show();
+        WindowsWorker::open_GameWindow(play_with_pc);
     }
     else
     {
@@ -35,20 +32,17 @@ void PresettingWindow::on_ButtonGoGame_clicked()
                 level_dif = 2;
             else
                 level_dif = 3;
-        GameWindow* game_window= new GameWindow(play_with_pc,pc_first,level_dif,this);
-        game_window->setWindowTitle("Domineering 8x8");
-        game_window->show();
-    }
 
+        WindowsWorker::open_GameWindow(play_with_pc,pc_first,level_dif);
+    }
+    WindowsWorker::close_PresettingWindow();
 }
 
 
 void PresettingWindow::on_ButtonBack_clicked()
 {
-    this->close();
-    MainWindow * menu = new MainWindow;
-    menu->setWindowTitle("Domineering 8x8");
-    menu->show();
+    WindowsWorker::open_MainWindow();
+    WindowsWorker::close_PresettingWindow();
 }
 
 
