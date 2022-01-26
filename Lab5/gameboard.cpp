@@ -70,6 +70,42 @@ void GameBoard::set_parameters(int side, bool g_with_pc, bool pc_first, int leve
     }
 }
 
+void GameBoard::download_game(int side, bool g_with_pc, bool pc_first1, int diffic, int current, bool finish, bool pl_win, Board b)
+{
+    size_side_px = side ;
+    size_cells = side/ amount_point;
+
+    game_with_pc = g_with_pc;
+    computer_first = pc_first1;
+    difficulty = diffic;
+    current_player = current;
+    finished = finish;
+    player_win = pl_win;
+    board = b;
+
+    view_board();
+}
+
+void GameBoard::view_board()
+{
+    for (int i=0; i < board.get_size() ; i++ )
+    {
+       if(board.get_number_player_cells(i) != -1)
+       {
+           if (i < board.get_index_edj_cells(i))
+           {
+               int row = i / board.get_amount_point_side();
+               int column = i % board.get_amount_point_side();
+
+               if(board.get_number_player_cells(i) == 1)
+                   PainterCube::paint_first_cube(scene, column * size_cells, row * size_cells, size_cells, size_cells*2);
+               else
+                   PainterCube::paint_second_cube(scene, column * size_cells, row * size_cells, size_cells*2, size_cells);
+           }
+       }
+    }
+}
+
 void GameBoard::mousePressEvent(QMouseEvent *event)
 {
     int mouse_x = event->position().x();

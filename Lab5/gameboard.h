@@ -38,6 +38,9 @@ public:
         //Метод, що використовується для встановлення розміру, ігрового поля і параметра g_with_pc(true) виклик при грі з пк і встановлення порядку ходу, рівня тяжкості
     void set_parameters(int side, bool g_with_pc, bool pc_first, int level_dif);
 
+        //встановлення параметрів загруженої гри
+    void download_game(int side, bool g_with_pc, bool pc_first1, int diffic, int current, bool finish, bool pl_win, Board b);
+
 protected:
          // метод що реагує на клік миші по цьому класу віджету GameBoard на вікні GameWindow для ходу гравця
     virtual void mousePressEvent(QMouseEvent *event);
@@ -60,6 +63,9 @@ private:
         // функція ходу гравця коли він ходить першим граючи з компютером і асинхронний виклик другого ходу компютера pc_move_second
     void player_move_first(int mouse_x, int mouse_y);
     void pc_move_second();
+
+        //відображення ігрового поля загруженої гри
+    void view_board();
 };
 
 #endif // GAMEBOARD_H
