@@ -24,6 +24,9 @@ private slots:
         // слот кнопки ButtonEnd закриття програми
     void on_ButtonEnd_clicked();
 
+        //слот кнопки ButtonDownload відкриття вікна загрузки гри (DownloadWindow)
+    void on_ButtonDownload_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

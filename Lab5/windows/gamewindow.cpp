@@ -40,40 +40,39 @@ GameWindow::~GameWindow()
 
 void GameWindow::on_CloseEnd_triggered()
 {
-    /*
-    this->close();
-    MainWindow * menu = new MainWindow;
-    menu->setWindowTitle("Domineering 8x8");
-    menu->show();*/
+    FileWorker::set_filename("");
     WindowsWorker::open_MainWindow();
     WindowsWorker::close_GameWindow();
 }
+
+void GameWindow::on_SaveAs_triggered()
+{
+    WindowsWorker::open_SaveWindow();
+    WindowsWorker::hide_WindowGame();
+}
+
+
+void GameWindow::on_Save_triggered()
+{
+    if(FileWorker::get_filename() == "")
+        on_SaveAs_triggered();
+    else
+        save_game();
+}
+
 void GameWindow::save_game()
 {
-   /* bool game_with_pc = game_board->get_game_with_pc();
-    bool finished = game_board->get_finished();
-    int who_move_first =  game_board->get_who_move_first();
+    bool game_with_pc = game_board->get_game_with_pc();
+    bool computer_first = game_board->get_computer_first();
+    int difficulty = game_board->get_difficulty();
     int current_player = game_board->get_current_player();
-    vector<int> scores = game_board->get_scores();
+    bool finished = game_board->get_finished();
+    bool player_win = game_board->get_player_win();
+    Board board = game_board->get_board();
 
-    FileWorker::save_game_state(game_with_pc,finished, who_move_first, current_player, scores);
+    FileWorker::save_game_file(game_with_pc, computer_first, difficulty, current_player, finished, player_win, board);
+    QMessageBox::about(this, "Збережено", "Гра успішно збережена");
 
-
-    vector<bool> flags = game_board->get_flags();
-    pair<int,int> converted_card = game_board->get_card_converted();
-
-    FileWorker::save_game_effects(flags, converted_card);
-
-
-    vector<pair<int,int>> hands1 = game_board->get_cards_hands1();
-    vector<pair<int,int>> hands2 = game_board->get_cards_hands2();
-    vector<pair<int,int>> deck = game_board->get_cards_deck();
-    pair<int,int> top_card = game_board->get_top_card();
-    vector<pair<int,int>> discard = game_board->get_diacardcards_deck();
-
-    FileWorker::save_game_cards(hands1, hands2, deck, top_card, discard);
-
-    QMessageBox::about(this, "Збережено", "Гра успішно збережена");*/
 }
 
 void GameWindow::download_game()
@@ -85,7 +84,7 @@ void GameWindow::download_game()
     bool finished;
     bool player_win;
     Board board;
-    FileWorker::save_game_file(game_with_pc, computer_first, difficulty, current_player, finished, player_win, board);
+    FileWorker::download_game_file(game_with_pc, computer_first, difficulty, current_player, finished, player_win, board);
     game_board->download_game(this->width(),game_with_pc, computer_first, difficulty, current_player, finished, player_win, board);
 
 }

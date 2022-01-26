@@ -43,6 +43,19 @@
      <string>Вийти з гри</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="ButtonDownload">
+    <property name="geometry">
+     <rect>
+      <x>75</x>
+      <y>110</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Загрузити гру</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

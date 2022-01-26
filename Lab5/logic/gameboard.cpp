@@ -83,6 +83,23 @@ void GameBoard::download_game(int side, bool g_with_pc, bool pc_first1, int diff
     player_win = pl_win;
     board = b;
 
+    level_recur = difficulty;
+    if(game_with_pc)
+    {
+        switch (difficulty)
+        {
+            case 1: time_deley = 400; break;
+            case 2: time_deley = 200; break;
+            case 3: time_deley = 50; break;
+        }
+    }
+
+    setFixedSize(size_side_px,size_side_px);
+    QPixmap image_board(":/images/image/board.png");
+    image_board = image_board.scaled(this->width(),this->height());
+    scene->setSceneRect(0,0,image_board.width(),image_board.height());
+    scene->setBackgroundBrush(image_board);
+
     view_board();
 }
 
@@ -434,4 +451,33 @@ void GameBoard::pc_move_second()
 void GameBoard::resizeEvent(QResizeEvent *event)
 {
     fitInView(sceneRect(), Qt::IgnoreAspectRatio);
+}
+
+bool GameBoard::get_game_with_pc()
+{
+    return game_with_pc;
+}
+bool GameBoard::get_computer_first()
+{
+    return computer_first;
+}
+int GameBoard::get_difficulty()
+{
+    return difficulty;
+}
+int GameBoard::get_current_player()
+{
+    return current_player;
+}
+bool GameBoard::get_finished()
+{
+    return finished;
+}
+bool GameBoard::get_player_win()
+{
+    return player_win;
+}
+Board GameBoard::get_board()
+{
+    return board;
 }

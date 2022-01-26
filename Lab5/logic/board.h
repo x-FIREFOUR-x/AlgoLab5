@@ -34,9 +34,16 @@ public:
         //з'єднати клітинки з індексами index1, index2 блоком гравця number_player
     bool set_adj_cells(int index1, int index2, int number_player);
 
+
+        //встановити кількість точок(клітинок на одній стороні поля)
     void set_amount_side(int amount_side);
+
+        // встановити розмір доски кількість клітинок
     void set_size(int all_amount);
+
+        //встановити масив arr_board
     void set_board(vector<pair<int,int>> b);
+
 
         // перевірка чи в гравця номер number_player є хід
     bool is_move(int number_player);

@@ -19,7 +19,7 @@ class GameWindow : public QMainWindow
 private:
     Ui::GameWindow *ui;  //Покажчик на інтерфейс вікна
 
-    GameBoard* game_board;
+    GameBoard* game_board;  //ігрове поле графічний віджет
 
 public:
         // конструктор створення вікна гри для 2 гравців
@@ -36,6 +36,10 @@ public:
 private slots:
         // слот в menu_bar "Зікінчити гру" закриває вікно GameWindow і повертається MainWindow
     void on_CloseEnd_triggered();
+        // слот в menu_bar "Зберегти як" ховає вікно GameWindow і відкриває вікно SaveWindow
+    void on_SaveAs_triggered();
+        // слот в menu_bar "Зберегти" зберігає дані в встановлений файл або ховає вікно GameWindow і відкриває вікно SaveWindow , якщо файл сейву не встановлений
+    void on_Save_triggered();
 };
 
 #endif // GAMEWINDOW_H

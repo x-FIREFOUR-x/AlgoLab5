@@ -12,9 +12,9 @@ using typeVec = vector<pair<int,int>>;
 class FileWorker
 {
 private:
-    static QString filename;
-    static QString type_file ;
-    static QString path;
+    static QString filename;            //імя файлу
+    static QString type_file ;          //рзширення файлу
+    static QString path;                //шлях до файлу
 public:
     FileWorker();
 
@@ -30,13 +30,12 @@ public:
                 //зберегти необіхідні парметри в файл
     static void save_game_file(bool game_with_pc, bool computer_first, int difficulty, int current_player, bool finished, bool player_win, Board& board);
 
-
                 //зчитати необіхідні параметри з файлу
     static void download_game_file(bool& game_with_pc, bool& computer_first, int& difficulty, int& current_player, bool& finished, bool& player_win, Board& board);
 
 private:
     static string all_name_file();                              //весь шлях до файлу
-    static void input_cells(ifstream& fin, typeVec& cells);
+    static void input_cells(ifstream& fin, typeVec& cells);     //парсінг даних про клітинки
 };
 
 #endif // FILEWORKER_H

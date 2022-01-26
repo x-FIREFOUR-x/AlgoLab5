@@ -66,6 +66,15 @@ private:
 
         //відображення ігрового поля загруженої гри
     void view_board();
+
+public:
+    bool get_game_with_pc();
+    bool get_computer_first();
+    int get_difficulty();
+    int get_current_player();
+    bool get_finished();
+    bool get_player_win();
+    Board get_board();
 };
 
 #endif // GAMEBOARD_H

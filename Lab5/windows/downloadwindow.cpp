@@ -140,7 +140,7 @@ void DownloadWindow::clicked_delete()
 
 void DownloadWindow::style()
 {
-
+    /*
     //ui->centralwidget->setStyleSheet("background-color:#2c8616;");
     //ui->scrollArea->setStyleSheet("background-color:white;");
     ui->scrollAreaWidgetContents->setStyleSheet("background-color:#2c8616;");
@@ -152,5 +152,6 @@ void DownloadWindow::style()
         buttons[i]->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 12pt Calibri;") ;
         buttons_delete[i]->setStyleSheet("background-color:red; border: 1px solid black; font: 16pt;") ;
     }
+    */
 
 }

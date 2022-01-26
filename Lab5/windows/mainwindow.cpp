@@ -17,11 +17,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_ButtonStart_clicked()
 {
-    /*
-    this->close();
-    PresettingWindow * preset_window = new PresettingWindow(this);
-    preset_window->setWindowTitle("Domineering 8x8");
-    preset_window->show();*/
     WindowsWorker::open_PresettingWindow();
     WindowsWorker::close_MainWindow();
 
@@ -30,5 +25,13 @@ void MainWindow::on_ButtonStart_clicked()
 void MainWindow::on_ButtonEnd_clicked()
 {
    QApplication::quit();
+}
+
+
+void MainWindow::on_ButtonDownload_clicked()
+{
+    WindowsWorker::open_DownloadWindow();
+    WindowsWorker::close_MainWindow();
+
 }
 
