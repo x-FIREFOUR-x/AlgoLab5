@@ -70,6 +70,20 @@ bool Board::set_adj_cells(int index1, int index2, int number_player)
    return succes_adj;
 }
 
+void Board::set_amount_side(int amount_side)
+{
+    amount_point_side = amount_side;
+}
+void Board::set_size(int all_amount)
+{
+   size = all_amount;
+}
+
+void Board::set_board(vector<pair<int,int>> b)
+{
+    arr_board = b;
+}
+
 bool Board::is_move(int number_player)
 {
     bool is_move = false;
