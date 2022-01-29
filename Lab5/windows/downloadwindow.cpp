@@ -140,18 +140,19 @@ void DownloadWindow::clicked_delete()
 
 void DownloadWindow::style()
 {
-    /*
+
     //ui->centralwidget->setStyleSheet("background-color:#2c8616;");
     //ui->scrollArea->setStyleSheet("background-color:white;");
-    ui->scrollAreaWidgetContents->setStyleSheet("background-color:#2c8616;");
+    ui->scrollAreaWidgetContents->setStyleSheet("background-color:#fff200;");
+    ui->centralwidget->setStyleSheet("background-color:#fff200;");
 
-    ui->label->setStyleSheet("color:black; font: italic 16pt Monotype Corsiva; font-weight: 550;") ;
+    ui->label->setStyleSheet("color:black; font: italic 14pt Calibri; font-weight: 550;") ;
 
     for (int i = 0; i < buttons.size(); i++ )
     {
-        buttons[i]->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 12pt Calibri;") ;
+        buttons[i]->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri;") ;
         buttons_delete[i]->setStyleSheet("background-color:red; border: 1px solid black; font: 16pt;") ;
     }
-    */
+
 
 }

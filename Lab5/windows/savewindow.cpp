@@ -94,10 +94,11 @@ bool SaveWindow::is_correct_filename()
 
 void SaveWindow::style()
 {
-    /*
-    ui->centralwidget->setStyleSheet("background-color:#2c8616;");
-    ui->SaveButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 16pt Monotype Corsiva; font-weight: 555;");
-    ui->label->setStyleSheet("color:black; font: italic 16pt Monotype Corsiva; font-weight: 550;");
+    ui->centralwidget->setStyleSheet("background-color:#fff200;");
 
-    ui->labelFilename->setStyleSheet("background-color:white; border: 1px solid black;");*/
+    ui->labelFilename->setStyleSheet("background-color:white;");
+
+    ui->label->setStyleSheet("font: italic 14pt Calibri; font-weight: 570;");
+
+    ui->SaveButton->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
 }

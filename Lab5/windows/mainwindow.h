@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private:
+    void style();       //стилізація вікна
+
 private slots:
         // слот кнопки ButtonStart початок нової гри(відкриває вікно GameWindow)
     void on_ButtonStart_clicked();

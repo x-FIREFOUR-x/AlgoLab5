@@ -95,3 +95,20 @@ void GameWindow::on_Rules_triggered()
     WindowsWorker::hide_WindowGame();
 }
 
+void GameWindow::style()
+{
+    /*
+    //ui->centralwidget->setStyleSheet("background-color:#2c8616;");
+    //ui->scrollArea->setStyleSheet("background-color:white;");
+    ui->scrollAreaWidgetContents->setStyleSheet("background-color:#2c8616;");
+
+    ui->label->setStyleSheet("color:black; font: italic 16pt Monotype Corsiva; font-weight: 550;") ;
+
+    for (int i = 0; i < buttons.size(); i++ )
+    {
+        buttons[i]->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 12pt Calibri;") ;
+        buttons_delete[i]->setStyleSheet("background-color:red; border: 1px solid black; font: 16pt;") ;
+    }
+    */
+
+}

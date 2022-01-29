@@ -7,6 +7,8 @@ PresettingWindow::PresettingWindow(QWidget *parent) :
     ui(new Ui::PresettingWindow)
 {
     ui->setupUi(this);
+    style();
+    this->setFixedSize(width(), height());
 }
 
 PresettingWindow::~PresettingWindow()
@@ -63,3 +65,24 @@ void PresettingWindow::on_radioButtonTwoPlayers_clicked()
     ui->frameDifficulty->setEnabled(false);
 }
 
+void PresettingWindow::style()
+{
+    ui->centralwidget->setStyleSheet("background-color:#fff200;");
+
+    ui->ButtonBack->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+    ui->ButtonGoGame->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+
+    ui->label->setStyleSheet("font: italic 12pt Calibri; font-weight: 570;");
+    ui->label_2->setStyleSheet("font: italic 12pt Calibri; font-weight: 570;");
+    ui->label_3->setStyleSheet("font: italic 12pt Calibri; font-weight: 570;");
+
+    ui->radioButtonEazy->setStyleSheet("font: italic 10pt Calibri; font-weight: 570;");
+    ui->radioButtonMiddle->setStyleSheet("font: italic 10pt Calibri; font-weight: 570;");
+    ui->radioButtonHard->setStyleSheet("font: italic 10pt Calibri; font-weight: 570;");
+
+    ui->radioButtonPCFirst->setStyleSheet("font: italic 10pt Calibri; font-weight: 570;");
+    ui->radioButtonPlayerFirst->setStyleSheet("font: italic 10pt Calibri; font-weight: 570;");
+
+    ui->radioButtonPlayPC->setStyleSheet("font: italic 10pt Calibri; font-weight: 570;");
+    ui->radioButtonTwoPlayers->setStyleSheet("font: italic 10pt Calibri; font-weight: 570;");
+}

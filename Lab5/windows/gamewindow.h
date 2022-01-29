@@ -33,6 +33,9 @@ public:
     void save_game();               //функція передачі в FileWorker необхідних параметрів збереження гри
     void download_game();           //функція отримання від FileWorker необхідних параметрів збереження гри
 
+private:
+    void style();       //стилізація вікна
+
 private slots:
         // слот в menu_bar "Зікінчити гру" закриває вікно GameWindow і повертається MainWindow
     void on_CloseEnd_triggered();

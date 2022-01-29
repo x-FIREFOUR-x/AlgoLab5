@@ -59,7 +59,6 @@ public:
     static void close_DownloadWindow();
 
 
-
             //методи приховання і показу вікна WindowGame
     static void hide_WindowGame();
     static void show_WindowGame();

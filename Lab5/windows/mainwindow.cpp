@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    style();
 }
 
 MainWindow::~MainWindow()
@@ -42,3 +43,13 @@ void MainWindow::on_ButtonRules_clicked()
     WindowsWorker::close_MainWindow();
 }
 
+void MainWindow::style()
+{
+
+    ui->centralwidget->setStyleSheet("background-color:#fff200;");
+
+    ui->ButtonStart->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+    ui->ButtonEnd->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+    ui->ButtonRules->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+    ui->ButtonDownload->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+}

@@ -80,10 +80,10 @@ void WindowRules::paint_page_rules()
 
 void WindowRules::style()
 {
-    /*this->setWindowTitle("Останній гравець");
-    //this->setStyleSheet("background-color:#2c8616;");
+    //this->setWindowTitle("Останній гравець");
+    ui->centralwidget->setStyleSheet("background-color:#fff200;");
 
-    ui->PreviousPageButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 12pt Calibri;");
-    ui->NextPageButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 12pt Calibri;");
-    ui->CloseRuleButton->setStyleSheet("background-color:yellow; border: 1px solid black; font: italic 14pt Monotype Corsiva; font-weight: 570;");*/
+    ui->PreviousPageButton->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+    ui->NextPageButton->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
+    ui->CloseRuleButton->setStyleSheet("background-color:#0bc13f; border: 1px solid black; font: italic 12pt Calibri; font-weight: 570;");
 }
