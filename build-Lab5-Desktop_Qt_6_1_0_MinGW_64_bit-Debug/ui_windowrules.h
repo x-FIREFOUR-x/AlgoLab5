@@ -38,7 +38,7 @@ public:
     {
         if (WindowRules->objectName().isEmpty())
             WindowRules->setObjectName(QString::fromUtf8("WindowRules"));
-        WindowRules->resize(900, 560);
+        WindowRules->resize(900, 530);
         centralwidget = new QWidget(WindowRules);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         graphicsView = new QGraphicsView(centralwidget);
@@ -62,7 +62,7 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(560, 470, 321, 31));
-        label->setStyleSheet(QString::fromUtf8("font: 12pt \"Calibri\";"));
+        label->setStyleSheet(QString::fromUtf8("font: 14pt \"Calibri\";font-weight: 560;"));
         label->setAlignment(Qt::AlignCenter);
         WindowRules->setCentralWidget(centralwidget);
         menubar = new QMenuBar(WindowRules);

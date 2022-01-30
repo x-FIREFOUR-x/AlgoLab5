@@ -10,5 +10,6 @@
         <file>image/rules/RulesPage1.png</file>
         <file>image/rules/RulesPage2.png</file>
         <file>image/rules/RulesPage3.png</file>
+        <file>image/icon/icon.png</file>
     </qresource>
 </RCC>

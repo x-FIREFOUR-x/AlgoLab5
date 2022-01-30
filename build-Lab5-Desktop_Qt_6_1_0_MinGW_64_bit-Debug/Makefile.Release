@@ -165,6 +165,7 @@ release/qrc_res.cpp: ../Lab5/res.qrc \
 		../Lab5/image/rules/RulesPage1.png \
 		../Lab5/image/rules/RulesPage3.png \
 		../Lab5/image/icon/saveAs.png \
+		../Lab5/image/icon/icon.png \
 		../Lab5/image/icon/close.png \
 		../Lab5/image/icon/rules.png \
 		../Lab5/image/icon/save.png
